@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Module 3.2: Production and Content Prompts (#5-#7) | Pro Liberal IA</title>
+<!-- ANTI-FOUC -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha3/modulo-3-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha3/modulo-3-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha3/modulo-3-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha3/modulo-3-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-3-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha3/modulo-3-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistant</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Routine</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-purple-400" href="../../index.html">Start</a><span>/</span>
+<a class="hover:text-purple-400" href="index.html">Track 3</a><span>/</span>
+<span class="text-purple-400">Module 3.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="3">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULE 3.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📱 Production and content prompts (#5-#7)</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Three prompts for creating professional documents and content: technical reports, social media posts, and short video scripts. Each includes a real template, a quality checklist, and adaptations for different professions.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">45</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Copy-run</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 3.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:3-2" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 of 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-purple-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- SVG: Fluxo de producao -->
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+<div class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Production workflow: your data goes in, runs through prompts 5, 6, and 7, and comes out as ready-to-use professional content" class="w-full h-auto" role="img" viewbox="0 0 800 220">
+<defs>
+<lineargradient id="m32-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a855f7"></stop><stop offset="1" stop-color="#7c3aed"></stop></lineargradient>
+<filter height="180%" id="m32-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m32-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#a855f7" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m32-grid)" height="220" width="800"></rect>
+<!-- Entrada -->
+<g filter="url(#m32-glow)">
+<rect fill="#1a1230" height="70" rx="12" stroke="url(#m32-grad)" stroke-width="2" width="140" x="20" y="75"></rect>
+</g>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="90" y="103">YOUR DATA</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="90" y="125">case, metrics, ideas</text>
+<!-- Arrow -->
+<path d="M160,110 L200,110" fill="none" opacity="0.6" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<polygon fill="#a855f7" opacity="0.6" points="200,105 210,110 200,115"></polygon>
+<!-- Prompt 5 -->
+<rect fill="#1a1230" height="50" opacity="0.85" rx="10" stroke="#c084fc" stroke-width="2" width="130" x="215" y="30"></rect>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="280" y="52">#5 Report</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="9" text-anchor="middle" x="280" y="68">technical opinion</text>
+<!-- Prompt 6 -->
+<rect fill="#1a1230" height="50" opacity="0.85" rx="10" stroke="#c084fc" stroke-width="2" width="130" x="215" y="85"></rect>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="280" y="107">#6 Social post</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="9" text-anchor="middle" x="280" y="123">LinkedIn / Instagram</text>
+<!-- Prompt 7 -->
+<rect fill="#1a1230" height="50" opacity="0.85" rx="10" stroke="#c084fc" stroke-width="2" width="130" x="215" y="140"></rect>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="280" y="162">#7 Video script</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="9" text-anchor="middle" x="280" y="178">60s structured</text>
+<!-- Arrows to refine -->
+<path d="M345,55 L420,95" fill="none" opacity="0.5" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<path d="M345,110 L420,110" fill="none" opacity="0.5" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<path d="M345,165 L420,125" fill="none" opacity="0.5" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<!-- Refine -->
+<rect fill="#1a1230" height="70" opacity="0.85" rx="12" stroke="#a855f7" stroke-width="2" width="140" x="425" y="75"></rect>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="495" y="103">ITERATION</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="495" y="125">3 rounds of adjustments</text>
+<!-- Arrow to output -->
+<path d="M565,110 L620,110" fill="none" opacity="0.6" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<polygon fill="#a855f7" opacity="0.6" points="620,105 630,110 620,115"></polygon>
+<!-- Output -->
+<g filter="url(#m32-glow)">
+<rect fill="#1a1230" height="70" rx="12" stroke="url(#m32-grad)" stroke-width="2" width="145" x="635" y="75"></rect>
+</g>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="707" y="103">CONTENT</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="707" y="125">ready to publish</text>
+<!-- Labels -->
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="400" y="18">AI production pipeline</text>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="11" opacity="0.7" text-anchor="middle" x="400" y="210">Data → Prompt → Iteration → Publishable content</text>
+</svg>
+</div>
+</div>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="3-2" data-inema-track="3" id="conteudo">
+<!-- TOPICO 1: Prompt #5 -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">📄 Prompt #5 - Technical report/opinion</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t1-p1">
+        O <strong class="text-purple-400">technical report</strong> and the most important document in your professional practice. Opinions, reports, progress reports: they all follow a logic of <strong class="text-purple-400">context, analysis, and recommendation</strong>. This prompt turns your notes and data into a structured document, ready for review and signature. The key is to provide concrete data: the more specific you are, the fewer corrections you’ll need to make.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #5 - Technical Report/Opinion (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-2-t1-prompt">Elabore um &lt;tipo: relatorio / parecer / laudo&gt; sobre:
+
+Assunto: &lt;assunto do parecer&gt;
+Minha profissao: &lt;sua profissao e especialidade&gt;
+Contexto: &lt;descreva a situacao em 3-5 frases&gt;
+Dados/evidencias:
+&lt;cole aqui: numeros, fatos, observacoes, resultados de exames/analises&gt;
+
+Estrutura obrigatoria:
+1. Introducao (contexto e objetivo do documento)
+2. Analise dos dados (o que os numeros/fatos mostram)
+3. Pontos de atencao (riscos, ressalvas, limitacoes)
+4. Conclusao e recomendacoes (proximos passos concretos)
+
+Tom: &lt;tecnico-acessivel / formal-juridico / clinico&gt;
+Tamanho: &lt;1 pagina / 2 paginas / detalhado&gt;
+Destinatario: &lt;quem vai ler - cliente, juiz, gerente, paciente&gt;
+
+Regras:
+- Nao invente dados que eu nao forneci
+- Se algum dado estiver incompleto, marque com [VERIFICAR]
+- Conclusoes devem decorrer diretamente das evidencias
+- Use linguagem tecnica adequada a minha profissao</pre>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3">What the Output Should Include</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m3-2-t1-p2">A well-generated report has 4 signs of quality. Use this checklist to validate it before signing:</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-700 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Data</span><p class="text-xs text-neutral-400 mt-1">All correct and cited</p></div>
+<div class="bg-dark-700 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Logic</span><p class="text-xs text-neutral-400 mt-1">Conclusions follow evidence</p></div>
+<div class="bg-dark-700 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Tone</span><p class="text-xs text-neutral-400 mt-1">Appropriate for the reader</p></div>
+<div class="bg-dark-700 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Action</span><p class="text-xs text-neutral-400 mt-1">Clear next steps</p></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ When the report works</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>You provided concrete data (numbers, dates, facts)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Is the type of document clear (opinion vs. report vs. expert assessment)?</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>The recipient has been specified (this changes the technical level)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>You reviewed every fact and every number before signing</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ When it will go wrong</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>You didn't provide data: AI fills in with assumptions</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Asked for a "complete report" without specifying the type or scope</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Didn't review before sending (a data error = a professional error)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Signed without checking whether the conclusions followed from the data</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Golden rule for AI-generated reports</h3>
+<p class="text-neutral-300" data-inema-block="m3-2-t1-tip">AI <strong>structures and drafts</strong>. You <strong>provides the data and validates</strong>. Never sign a document generated by AI without checking every fact and every number. You remain responsible for the technical and professional accuracy. If the AI marked something with [VERIFY], you need to resolve it before sending.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 2: Prompt #6 -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📱 Prompt #6 - LinkedIn/Instagram post</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t2-p1">
+        Independent professionals who publish content regularly attract <strong class="text-purple-400">3x more clients through referrals</strong> than those who don't publish. The problem isn't a lack of knowledge; it's a lack of time to turn that knowledge into text. This prompt solves the blank-page problem and generates a solid draft in 5 minutes.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #6 - Social Media Post (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-2-t2-prompt">Crie um post para &lt;rede: LinkedIn / Instagram&gt; sobre:
+
+Tema: &lt;tema da sua expertise&gt;
+Angulo: &lt;o que voce quer defender, ensinar ou alertar&gt;
+Publico: &lt;quem voce quer atingir - empresarios, pacientes, colegas&gt;
+
+Formato:
+- Gancho forte na primeira linha (frase que prende a atencao)
+- Desenvolvimento em 3-4 paragrafos curtos (2-3 linhas cada)
+- Exemplo pratico ou caso real (anonimizado)
+- Chamada para acao no final
+- 3 sugestoes de hashtags relevantes
+
+Tom: &lt;didatico / autoridade / provocativo / inspirador&gt;
+Tamanho: maximo 200 palavras
+Minha profissao: &lt;sua area&gt; com &lt;X&gt; anos de experiencia
+
+Regras:
+- Nao comece com "Voce sabia que..." (cliche)
+- Paragrafos curtos (WhatsApp visual - facil de escanear)
+- Inclua 1 dado concreto ou numero
+- Se for Instagram, sugira ideia de imagem/carrossel</pre>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4">Anatomy of a post that works</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600"><h4 class="font-semibold text-white mb-1">Opening hook (first line)</h4><p class="text-sm text-neutral-300">"90% of independent professionals lose clients because of a simple email mistake." A short phrase that sparks curiosity or disagreement. Avoid: "Today I’m going to talk about..." or "Did you know that..."</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600"><h4 class="font-semibold text-white mb-1">Development (body)</h4><p class="text-sm text-neutral-300">3-4 short paragraphs. Each with ONE idea. Add spacing between paragraphs. On LinkedIn, long paragraphs kill engagement. On Instagram, break them into carousel slides.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600"><h4 class="font-semibold text-white mb-1">Real example</h4><p class="text-sm text-neutral-300">An anonymized case from your practice. "A client came in with X, we did Y, and the result was Z." This proves you know what you’re talking about and that it’s not just theory.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">4</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600"><h4 class="font-semibold text-white mb-1">CTA (call to action)</h4><p class="text-sm text-neutral-300">"Have you been through this? Tell us in the comments." or "Save this post for when you need it." Questions drive more engagement than statements. On Instagram, "Send this to someone who needs to see it."</p></div>
+</div>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> LinkedIn vs. Instagram: practical differences</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">LinkedIn</h4>
+<ul class="space-y-1 text-sm text-neutral-300">
+<li>Long text works (up to 3000 characters)</li>
+<li>Professional yet approachable tone</li>
+<li>Hashtags: 3-5 maximum, at the end</li>
+<li>Best time: Tue-Thu, 8-10 a.m. or 5-7 p.m.</li>
+<li>Focus: thought leadership</li>
+</ul>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Instagram</h4>
+<ul class="space-y-1 text-sm text-neutral-300">
+<li>Visual first (image or carousel)</li>
+<li>Short caption (150 words recommended)</li>
+<li>Hashtags: 10-15, mix niche and broad</li>
+<li>Best time: Mon-Fri, 12 p.m. or 7-9 p.m.</li>
+<li>Focus: quick education + visual authority</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Best times to post</h3>
+<p class="text-neutral-300" data-inema-block="m3-2-t2-tip">LinkedIn: Tuesday through Thursday, between 8 a.m. and 10 a.m. (when professionals check their feeds) or 5 p.m. and 7 p.m. (after work). Instagram: Monday through Friday, at 12 p.m. (lunch) or 7 p.m. to 9 p.m. (downtime). Saturday mornings work well for light content. Use AI to schedule: "Generate 5 posts for the week, one per day from Tuesday through Saturday."</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 3: Prompt #7 -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🎥 Prompt #7 — Short video script (1–2 min)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t3-p1">
+        Short videos (Reels, TikTok, Shorts) are the format with <strong class="text-purple-400">greater organic reach</strong> in 2026. The challenge for independent professionals: condensing years of expertise into 60 seconds without sounding superficial. This prompt generates a structured script you can record right from your phone, with timestamps and on-screen text cues.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #7 - Short Video Script (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-2-t3-prompt">Crie um roteiro de video curto (60-90 segundos) sobre:
+
+Tema: &lt;tema da sua area de expertise&gt;
+Formato: &lt;Reels / TikTok / Shorts&gt;
+Publico-alvo: &lt;quem vai assistir - idade, perfil, dor principal&gt;
+
+Estrutura do roteiro:
+- GANCHO (0-5s): frase de abertura que prende (pergunta, dado chocante ou mito)
+- PROBLEMA (5-15s): descreva a dor/situacao que o publico vive
+- SOLUCAO (15-45s): explique em 3 passos curtos o que fazer
+- CTA (45-60s): o que voce quer que a pessoa faca ("me siga", "salve", "comenta")
+
+Regras:
+- Linguagem falada, nao escrita (como se estivesse conversando)
+- Frases curtas (max 12 palavras por frase)
+- Incluir [TEXTO NA TELA] quando houver ponto que merece destaque visual
+- Incluir [CORTE] para indicar transicoes de camera
+- Tom: &lt;didatico / direto / informal-profissional&gt;
+- Ao final, inclua 3 alternativas de gancho para eu testar</pre>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3">Script visual structure</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-xs">0-5s</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Hook</h4>
+<p class="text-sm text-neutral-300">The most important line in the video. It determines whether someone stops scrolling or keeps going. Examples: “This mistake costs R$ 50 mil per year, and almost no one notices.” / “If you’re a [profession], stop doing this now.”</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-xs">5-15s</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Problem</h4>
+<p class="text-sm text-neutral-300">Describe the pain your audience feels. Use "you" to make it personal. "Do you spend 3 hours a week writing reports that no one reads to the end?"</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-xs">15-45s</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Solution (3 steps)</h4>
+<p class="text-sm text-neutral-300">Deliver real value in 3 numbered points. Each point = 1 short sentence + [ON-SCREEN TEXT] with the summary. Viewers can read it even without audio.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-xs">45-60s</span></div>
+<div class="flex-1 bg-dark-700 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">CTA</h4>
+<p class="text-sm text-neutral-300">End with a clear action: "Save this video to use later" or "Follow me for more tips on [field]." Avoid generic CTAs like "leave a like."</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Why short videos work for professionals</h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="text-center bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-blue-400">2x</div>
+<div class="text-xs text-neutral-400 mt-1">Reach vs. static post</div>
+</div>
+<div class="text-center bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-blue-400">10x</div>
+<div class="text-xs text-neutral-400 mt-1">Trust vs. text</div>
+</div>
+<div class="text-center bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-blue-400">3 months</div>
+<div class="text-xs text-neutral-400 mt-1">To become a go-to expert</div>
+</div>
+<div class="text-center bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-blue-400">4 pieces</div>
+<div class="text-xs text-neutral-400 mt-1">1 video becomes 4 pieces of content</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Tip: script test</h3>
+<p class="text-neutral-300" data-inema-block="m3-2-t3-tip">After generating the script, read it aloud while timing yourself. If it runs over 70 seconds, ask the AI: "Cut 20% while keeping the 3 steps." If the hook doesn’t grab attention, ask: "Rewrite the hook with 3 more provocative alternatives." The hook is responsible for 80% of the video’s performance.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 4: Refinando a saida -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">✏️ Refining the output — iteration and adjustment</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t4-p1">
+        The AI’s first response is almost never the final version. The real power lies in <strong class="text-purple-400">iteration</strong>: request specific adjustments until the result is excellent. Professionals who iterate get 5x better results than those who accept the first output. The rule is simple: generate, evaluate, refine, repeat.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4">Refinement commands (copy and use)</h3>
+<div class="space-y-4">
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">Adjust tone</h4>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m3-2-t4-ref1">Reescreva com tom mais &lt;formal / acessivel / direto&gt;. Mantenha o conteudo, mude apenas a forma de comunicar.</pre>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">Shorten</h4>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m3-2-t4-ref2">Corte 40% do texto sem perder informacao essencial. Priorize: dados, decisoes, acoes concretas.</pre>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">Change the format</h4>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m3-2-t4-ref3">Transforme esse &lt;relatorio / post / roteiro&gt; em um &lt;e-mail / carrossel / thread&gt;, mantendo as conclusoes e o tom.</pre>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">Add data</h4>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m3-2-t4-ref4">Inclua esses dados adicionais na secao de analise: &lt;novos dados&gt;. Ajuste as conclusoes se necessario.</pre>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">Cross-checking</h4>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m3-2-t4-ref5">Revise esse documento e me diga: tem alguma afirmacao sem evidencia? Alguma conclusao que nao decorre dos dados? Algum ponto que pode ser mal interpretado?</pre>
+</div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3">3-round refinement cycle</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m3-2-t4-p2">Every piece of professional content goes through this cycle. In practice, 3 rounds turn a draft into publishable material:</p>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">1</span></div>
+<div class="flex-1"><h4 class="font-semibold text-white">Round 1: Structure</h4><p class="text-sm text-neutral-300">Generate with the main prompt. Evaluate: Does the structure make sense? Are the sections in the right order? Is the data present? If the structure is wrong, revise the prompt before adjusting details.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
+<div class="flex-1"><h4 class="font-semibold text-white">Round 2: Tone and details</h4><p class="text-sm text-neutral-300">Adjust the tone, correct inaccurate data, ask it to expand or cut sections. Use the refinement commands above. This is the time to add information you forgot in the first round.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">3</span></div>
+<div class="flex-1"><h4 class="font-semibold text-white">Round 3: Polish</h4><p class="text-sm text-neutral-300">Read it aloud. Ask the AI: "Review and correct inconsistencies." Make the final adjustments manually: details only you know, names, exact numbers. Sign it.</p></div>
+</div>
+</div>
+</div>
+<div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center"><span class="mr-2">⚡</span> Average iteration time</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+<div class="text-center">
+<div class="text-2xl font-bold text-purple-400">2 min</div>
+<div class="text-xs text-neutral-400">Round 1 (generate)</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-purple-400">3 min</div>
+<div class="text-xs text-neutral-400">Round 2 (adjust)</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-purple-400">2 min</div>
+<div class="text-xs text-neutral-400">Round 3 (polish)</div>
+</div>
+</div>
+<p class="text-sm text-neutral-400 mt-4 text-center">Total: 7 minutes for publishable content. Without AI: 30-60 minutes.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 5: Adaptacoes por profissao -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📊 Adaptations by profession</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t5-p1">
+        Prompts #5, #6, and #7 are universal, but each profession has <strong class="text-purple-400">specific vocabulary, formats, and constraints</strong>. A medical report is different from a legal opinion, and an accountant’s post follows different rules than an architect’s post. Here’s what to adjust in each field to get the most out of the production prompts.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4">Adjustments by professional field</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">👩‍⚕️ Doctor</h4>
+<p class="text-sm text-neutral-300 mb-2"><strong>Report:</strong> use "clinical opinion" or "progress note." Never let AI invent a diagnosis. Include: "based on the tests presented by the patient." Avoid diagnostic conclusions: AI structures the information; you validate it clinically.</p>
+<p class="text-sm text-neutral-300 mb-2"><strong>Post:</strong> avoid providing medical advice. Focus on health education. Always include: "consult your doctor." Engaging topics: prevention, common myths, when to seek help.</p>
+<p class="text-sm text-neutral-300"><strong>Video:</strong> simple language (the patient doesn't know technical terms). Ideal format: "3 signs you need to see a [specialist]".</p>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">👩‍⚖️ Lawyer</h4>
+<p class="text-sm text-neutral-300 mb-2"><strong>Report:</strong> use "legal opinion" with legal grounds. Include: "without prejudice to a better judgment" and statutory articles when applicable. AI provides the structure; you check the case law.</p>
+<p class="text-sm text-neutral-300 mb-2"><strong>Post:</strong> translate legalese into accessible language. Topics: "your rights in X," "what the law says about Y." Avoid commenting on ongoing cases or naming parties.</p>
+<p class="text-sm text-neutral-300"><strong>Video:</strong> format "3 things you need to know about [legal topic]." Authority + usefulness = engagement.</p>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">📈 Accountant</h4>
+<p class="text-sm text-neutral-300 mb-2"><strong>Report:</strong> include the tax period, legal basis (IN, LC, decree). Conclusion: impact in R$ for the client. The AI organizes; you validate the rates and classifications.</p>
+<p class="text-sm text-neutral-300 mb-2"><strong>Post:</strong> seasonal topics (IRPF, IRPJ, DAS, ancillary obligations). Format: "checklist" or "deadline approaching." High engagement during filing season.</p>
+<p class="text-sm text-neutral-300"><strong>Video:</strong> "Did you know you can deduct X from your taxes?" Concrete figures + real savings in dollars.</p>
+</div>
+<div class="bg-dark-700 rounded-lg p-4">
+<h4 class="font-semibold text-white mb-2">📐 Architect</h4>
+<p class="text-sm text-neutral-300 mb-2"><strong>Report:</strong> use "descriptive report" or "inspection report." Include regulatory references (ABNT, municipal building code).</p>
+<p class="text-sm text-neutral-300 mb-2"><strong>Post:</strong> before/after projects (strong visuals). Topics: trends, common renovation mistakes, "why hire an architect." Instagram works better than LinkedIn in this field.</p>
+<p class="text-sm text-neutral-300"><strong>Video:</strong> virtual tour, decorating tips, "3 mistakes that increase your construction costs by 40%." Visuals are essential.</p>
+</div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 Quick Adaptation Prompt (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-2-t5-prompt">Adapte este texto para o tom e vocabulario de um &lt;profissao&gt;:
+
+Texto original:
+&lt;cole o texto gerado pelos prompts #5, #6 ou #7&gt;
+
+Ajustes necessarios:
+- Terminologia: use os termos tecnicos de &lt;profissao&gt;
+- Restricoes eticas: &lt;liste restricoes da sua profissao&gt;
+- Formato esperado: &lt;descreva como seu publico espera receber esse tipo de conteudo&gt;
+- Tom: &lt;formal-tecnico / acessivel-educativo / consultivo&gt;</pre>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 6: Exercicio integrado -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🎯 Integrated exercise - create 3 real deliverables</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-2-t6-p1">
+        In this exercise, you'll use the <strong class="text-purple-400">3 production prompts</strong> to create 3 real pieces for your professional practice. The goal isn’t just to test the prompts, but to finish this module with <strong class="text-purple-400">publishable material</strong> in hand. Use a real case (already completed) as the basis for all 3 pieces.
+      </p>
+<div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4">Exercise outline (20 minutes)</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">1</span></div>
+<div class="flex-1 bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Piece 1: Report (Prompt #5) - 7 min</h4>
+<p class="text-sm text-neutral-300">Choose a real, completed case from your practice. Use Prompt #5 to generate a report/opinion. Refine it in 2 rounds: structure first, then tone and details.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">2</span></div>
+<div class="flex-1 bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Piece 2: Post (Prompt #6) - 5 min</h4>
+<p class="text-sm text-neutral-300">Draw a lesson or insight from the same case. Use Prompt #6 to generate a LinkedIn or Instagram post. Refine the hook at least 3 times until you find the strongest one.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">3</span></div>
+<div class="flex-1 bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Piece 3: Video (Prompt #7) - 5 min</h4>
+<p class="text-sm text-neutral-300">Turn the same lesson into a 60-second script with Prompt #7. Read it aloud while timing yourself. If it runs over 70 seconds, ask it to cut 20%.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">4</span></div>
+<div class="flex-1 bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Bonus: Derivation - 3 min</h4>
+<p class="text-sm text-neutral-300">Use the iteration command: "Turn this report into a 3-paragraph email for the client." You just created a 4th piece from the same foundation. That's the principle of repurposing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4">Quality checklist</h3>
+<div class="space-y-3 text-neutral-300">
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Does the report contain accurate data and conclusions supported by evidence?</span></div>
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Does the post have a strong hook in the first line and a real example in the body?</span></div>
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Can the video script be read aloud in 60–70 seconds?</span></div>
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Do the 3 pieces maintain consistent information and a professional tone?</span></div>
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Would you publish all of them under your name without needing to edit them further?</span></div>
+<div class="flex items-start space-x-2"><span class="text-purple-400">✓</span><span>Does the derivative (4th piece) preserve the essence without copying the original format?</span></div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3">Self-assessment: Are you ready?</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m3-2-t6-eval">Answer honestly. If you answer "yes" to at least 4, you have mastered production prompts:</p>
+<div class="space-y-3 text-neutral-300">
+<div class="flex items-start space-x-2"><span class="text-neutral-500">○</span><span>Can I generate a report in less than 10 minutes?</span></div>
+<div class="flex items-start space-x-2"><span class="text-neutral-500">○</span><span>Can I adjust the tone (formal/approachable) without rewriting from scratch?</span></div>
+<div class="flex items-start space-x-2"><span class="text-neutral-500">○</span><span>Does my post have a hook, body, example, and CTA?</span></div>
+<div class="flex items-start space-x-2"><span class="text-neutral-500">○</span><span>Does my video script fit the time and sound natural when read aloud?</span></div>
+<div class="flex items-start space-x-2"><span class="text-neutral-500">○</span><span>Can I turn 1 case into 3+ different pieces of content?</span></div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> The principle of repurposing</h3>
+<p class="text-neutral-300" data-inema-block="m3-2-t6-tip">1 real case = 1 report + 1 post + 1 video + 1 email. Professionals who master this workflow produce 4x more content in the same amount of time. AI handles the format conversion; you handle the curation and validation. That’s the productivity multiplier that sets apart those who "use AI" from those who "master AI."</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">20 min</span><p class="text-xs text-neutral-400 mt-1">Complete exercise</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">3 pieces</span><p class="text-xs text-neutral-400 mt-1">Report+post+video</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">1 case</span><p class="text-xs text-neutral-400 mt-1">Foundation for everything</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Ready to publish</span><p class="text-xs text-neutral-400 mt-1">Final material</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #5: Report/Assessment</strong><span class="text-neutral-400"> - data + structure + tone = professional document in 10 min</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #6: LinkedIn/Instagram Post</strong><span class="text-neutral-400"> - hook + development + CTA = online authority in 5 min</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #7: Video Script</strong><span class="text-neutral-400"> - 60 structured seconds = maximum organic reach</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Iteration:</strong><span class="text-neutral-400"> 3 rounds of refinement turn a draft into a publishable piece</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Reuse:</strong><span class="text-neutral-400"> 1 real case = 4 pieces of content (report + post + video + email)</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-purple-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">3.3 - Strategy and management prompts (#8-#10): business proposal, competitor analysis, and weekly planning.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-3-1.html">← Previous module</a>
+<a class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors" href="modulo-3-3.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Experienced Independent Professional with AI - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script src="../../../assets/learn.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

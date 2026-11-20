@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>5.1 Checklist de atendimento | Profissional Liberal Experiente com IA</title>
+<!-- ANTI-FOUC: bloqueante, ANTES do Tailwind -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Manifesto do curso -->
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "pro-liberal-ia",
+    "tracks": [
+      { "n": "1", "title": "Fundamentos da IA", "modules": [
+        { "id": "1-1", "title": "O que a IA pode fazer por voce", "topics": 6, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "Como a IA pensa", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" },
+        { "id": "1-3", "title": "Escolhendo sua ferramenta", "topics": 6, "href": "curso/trilha1/modulo-1-3.html" }
+      ]},
+      { "n": "2", "title": "Seu Assistente Profissional", "modules": [
+        { "id": "2-1", "title": "Criando seu assistente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Ensinando o contexto", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" },
+        { "id": "2-3", "title": "Fluxo de trabalho diario", "topics": 6, "href": "curso/trilha2/modulo-2-3.html" }
+      ]},
+      { "n": "3", "title": "Os 10 Prompts Essenciais", "modules": [
+        { "id": "3-1", "title": "Prompts de atendimento", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Prompts de producao", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" },
+        { "id": "3-3", "title": "Prompts de estrategia", "topics": 6, "href": "curso/trilha3/modulo-3-3.html" }
+      ]},
+      { "n": "4", "title": "Templates Profissionais", "modules": [
+        { "id": "4-1", "title": "Proposta comercial", "topics": 6, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Resposta para cliente", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" },
+        { "id": "4-3", "title": "Conteudo para autoridade", "topics": 6, "href": "curso/trilha4/modulo-4-3.html" }
+      ]},
+      { "n": "5", "title": "Rotina e Pratica", "modules": [
+        { "id": "5-1", "title": "Checklist de atendimento", "topics": 6, "href": "curso/trilha5/modulo-5-1.html" },
+        { "id": "5-2", "title": "Rotina semanal", "topics": 6, "href": "curso/trilha5/modulo-5-2.html" },
+        { "id": "5-3", "title": "Proximos passos", "topics": 6, "href": "curso/trilha5/modulo-5-3.html" }
+      ]}
+    ]
+  }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - teal accent */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13, 148, 136, 0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13, 148, 136, 0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13, 148, 136, 0.18); }
+
+    /* Light mode - gradients, primary, misc */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha5/modulo-5-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha5/modulo-5-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha5/modulo-5-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-5-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha5/modulo-5-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha5/modulo-5-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- Nav principal -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html">
+<span class="sm:hidden">T1</span><span class="hidden sm:inline">🧠 Fundamentos</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html">
+<span class="sm:hidden">T2</span><span class="hidden sm:inline">🤖 Assistente</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html">
+<span class="sm:hidden">T3</span><span class="hidden sm:inline">⚡ Prompts</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html">
+<span class="sm:hidden">T4</span><span class="hidden sm:inline">📄 Templates</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10" href="index.html">
+<span class="sm:hidden">T5</span><span class="hidden sm:inline">🔄 Rotina</span>
+</a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20">
+<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+</svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Breadcrumbs -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-teal-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-teal-400" href="index.html">Trilha 5</a>
+<span>/</span>
+<span class="text-teal-400">Modulo 5.1</span>
+</div>
+</nav>
+<!-- Header -->
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">Checklist de atendimento com IA</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Um checklist em 3 fases para integrar a IA antes, durante e depois de cada atendimento. Copie e adapte para sua profissao.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-teal-400">6</div>
+<div class="text-xs text-neutral-400">Topicos</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-teal-400">30</div>
+<div class="text-xs text-neutral-400">Minutos</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-teal-400">Pratico</div>
+<div class="text-xs text-neutral-400">Nivel</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-teal-400">Checklist</div>
+<div class="text-xs text-neutral-400">Tipo</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="5-1" data-inema-track="5" id="conteudo">
+<!-- Topico 1: Por que ter um checklist -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-1" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">Por que ter um checklist</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t1-p1">
+        Pilotos usam checklists. Cirurgioes usam checklists.
+        <strong class="text-teal-400">Profissionais liberais que usam checklists</strong>
+        reduzem erros em ate 40% e entregam experiencia consistente a todos os clientes,
+        nao so aos que "pegaram um dia bom".
+      </p>
+<!-- SVG: Fluxo de 3 fases -->
+<div class="rounded-2xl border border-teal-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Fluxo de 3 fases do checklist: antes, durante e depois do atendimento" class="w-full h-auto" role="img" viewbox="0 0 800 160">
+<defs>
+<lineargradient id="m51-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#2dd4bf"></stop>
+<stop offset="1" stop-color="#14b8a6"></stop>
+</lineargradient>
+<filter height="180%" id="m51-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur>
+<femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m51-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#14b8a6" opacity="0.12" r="1.3"></circle>
+</pattern>
+<marker id="m51-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5">
+<path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#2dd4bf"></path>
+</marker>
+</defs>
+<rect fill="url(#m51-grid)" height="160" width="800"></rect>
+<g filter="url(#m51-glow)">
+<rect fill="#0c1f1c" height="64" rx="14" stroke="url(#m51-grad)" stroke-width="2" width="200" x="30" y="48"></rect>
+</g>
+<text fill="#2dd4bf" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="130" y="75">Antes</text>
+<text fill="#99f6e4" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="130" y="95">preparacao + briefing</text>
+<path d="M230,80 L290,80" fill="none" marker-end="url(#m51-ah)" opacity="0.65" stroke="#2dd4bf" stroke-width="2"></path>
+<rect fill="#0e1b26" height="64" rx="14" stroke="#38bdf8" stroke-width="2" width="200" x="290" y="48"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="390" y="75">Durante</text>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="390" y="95">apoio em tempo real</text>
+<path d="M490,80 L550,80" fill="none" marker-end="url(#m51-ah)" opacity="0.55" stroke="#38bdf8" stroke-width="2"></path>
+<g filter="url(#m51-glow)">
+<rect fill="#0c1f1c" height="64" rx="14" stroke="url(#m51-grad)" stroke-width="2" width="210" x="550" y="48"></rect>
+</g>
+<text fill="#2dd4bf" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="655" y="75">Depois</text>
+<text fill="#99f6e4" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="655" y="95">follow-up + documentacao</text>
+</svg>
+</div>
+<!-- Info box: impacto -->
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+<span class="mr-2">📊</span> Impacto do checklist
+        </h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>40%</strong> menos erros em atendimentos padronizados</li>
+<li><strong>2x</strong> mais follow-ups realizados quando ha checklist</li>
+<li><strong>90%</strong> dos clientes percebem diferenca na organizacao</li>
+</ul>
+</div>
+<!-- Grid de stats -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">3 fases</span>
+<p class="text-xs text-neutral-400 mt-1">Antes/durante/depois</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Consistencia</span>
+<p class="text-xs text-neutral-400 mt-1">Todo atendimento</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">-40%</span>
+<p class="text-xs text-neutral-400 mt-1">Erros reduzidos</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Adaptavel</span>
+<p class="text-xs text-neutral-400 mt-1">Qualquer area</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 2: Antes do atendimento -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-2" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">Antes do atendimento</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t2-p1">
+        A <strong class="text-teal-400">preparacao</strong> e o que separa um atendimento mediano de um excelente.
+        Com a IA, voce revisa historico, prepara perguntas e antecipa necessidades em 5 minutos.
+      </p>
+<!-- Prompt: preparacao -->
+<div class="bg-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+<span class="mr-2">📋</span> Prompt: preparacao pre-atendimento
+        </h3>
+<div class="bg-dark-900 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap">Prepare um briefing para meu proximo atendimento:
+
+CLIENTE: [nome]
+HISTORICO: [resuma interacoes anteriores em 2-3 linhas]
+MOTIVO DO ATENDIMENTO: [o que o cliente precisa hoje]
+MINHA PROFISSAO: [sua area]
+
+GERE:
+1. Resumo do historico (3 bullets)
+2. 3 perguntas que devo fazer
+3. Possiveis objecoes/duvidas do cliente
+4. Materiais que devo ter em maos
+5. Tom recomendado para este cliente</div>
+</div>
+<!-- Comparison grid: Fazer vs Evitar -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">Fazer antes</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2">
+<span class="text-emerald-400">✓</span>
+<span>Revisar historico do cliente</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-emerald-400">✓</span>
+<span>Preparar perguntas especificas</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-emerald-400">✓</span>
+<span>Ter materiais prontos</span>
+</li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">Evitar</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2">
+<span class="text-red-400">✗</span>
+<span>Improvisar sem ler o historico</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-red-400">✗</span>
+<span>Perguntar o que ja foi respondido</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-red-400">✗</span>
+<span>Chegar sem agenda definida</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">5 min</span>
+<p class="text-xs text-neutral-400 mt-1">Preparacao</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Historico</span>
+<p class="text-xs text-neutral-400 mt-1">Revisado</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Perguntas</span>
+<p class="text-xs text-neutral-400 mt-1">Preparadas</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Materiais</span>
+<p class="text-xs text-neutral-400 mt-1">Em maos</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 3: Durante o atendimento -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-3" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">Durante o atendimento</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t3-p1">
+        Durante o atendimento, a IA funciona como um
+        <strong class="text-teal-400">assistente silencioso</strong>: toma notas, sugere respostas e
+        consulta informacoes. Voce foca 100% no cliente.
+      </p>
+<!-- Como usar IA durante -->
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+<span class="mr-2">🤝</span> Como usar IA durante o atendimento
+        </h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Anotacoes:</strong> grave o audio (com permissao) e peca para a IA transcrever e resumir depois</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Consulta rapida:</strong> em atendimentos por chat, use a IA para pesquisar informacoes em tempo real</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Sugestoes:</strong> entre um atendimento e outro, peca sugestoes de abordagem</span>
+</li>
+</ul>
+</div>
+<!-- Tip box -->
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+<span class="mr-2">💡</span> Dica: escuta ativa primeiro
+        </h3>
+<p class="text-neutral-300">
+          A IA e uma ferramenta de apoio, nao um substituto para a <strong>escuta ativa</strong>.
+          Durante o atendimento presencial, mantenha contato visual e atencao plena.
+          Use a IA nos intervalos ou na pos-consulta.
+        </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Gravar</span>
+<p class="text-xs text-neutral-400 mt-1">Com permissao</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Consultar</span>
+<p class="text-xs text-neutral-400 mt-1">Tempo real</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Escutar</span>
+<p class="text-xs text-neutral-400 mt-1">Atencao plena</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Anotar</span>
+<p class="text-xs text-neutral-400 mt-1">IA transcreve</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 4: Depois do atendimento -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-4" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">Depois do atendimento</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t4-p1">
+        O <strong class="text-teal-400">follow-up</strong> e onde a maioria dos profissionais falha.
+        A IA automatiza resumos, e-mails de acompanhamento e definicao de proximos passos.
+      </p>
+<!-- Prompt: follow-up -->
+<div class="bg-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+<span class="mr-2">📝</span> Prompt: follow-up pos-atendimento
+        </h3>
+<div class="bg-dark-900 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap">Com base nestas anotacoes do atendimento:
+[Cole suas anotacoes ou transcricao aqui]
+
+GERE:
+1. Resumo do atendimento (5 bullets)
+2. E-mail de follow-up para o cliente (150 palavras max)
+3. Lista de proximos passos com prazos
+4. Lembretes para mim (tarefas internas)
+5. Data sugerida para proximo contato
+
+CLIENTE: [nome]
+MINHA PROFISSAO: [area]</div>
+</div>
+<!-- Timeline: 3 passos do follow-up -->
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+<span class="text-teal-400 font-bold text-sm">1</span>
+</div>
+<div class="flex-1 bg-dark-800 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Resuma o atendimento</h4>
+<p class="text-sm text-neutral-300">Cole anotacoes na IA e peca resumo em 5 bullets.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+<span class="text-teal-400 font-bold text-sm">2</span>
+</div>
+<div class="flex-1 bg-dark-800 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Envie o follow-up</h4>
+<p class="text-sm text-neutral-300">E-mail ou WhatsApp gerado pela IA, revisado em 2 minutos.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+<span class="text-teal-400 font-bold text-sm">3</span>
+</div>
+<div class="flex-1 bg-dark-800 rounded-xl p-4 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Agende o proximo contato</h4>
+<p class="text-sm text-neutral-300">Coloque no calendario a data sugerida pela IA.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Resumo</span>
+<p class="text-xs text-neutral-400 mt-1">5 bullets</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Follow-up</span>
+<p class="text-xs text-neutral-400 mt-1">No mesmo dia</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Proximos</span>
+<p class="text-xs text-neutral-400 mt-1">Com prazo</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Agenda</span>
+<p class="text-xs text-neutral-400 mt-1">Proximo contato</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 5: Personalize seu checklist -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-5" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">Personalize seu checklist</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t5-p1">
+        O checklist generico e o ponto de partida.
+        <strong class="text-teal-400">Personalize</strong> para sua profissao,
+        tipo de atendimento e perfil de clientes.
+      </p>
+<!-- Prompt: personalizar -->
+<div class="bg-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+<span class="mr-2">🔧</span> Prompt: personalizar checklist
+        </h3>
+<div class="bg-dark-900 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap">Crie um checklist de atendimento personalizado:
+
+PROFISSAO: [sua area]
+TIPO DE ATENDIMENTO: [presencial / online / hibrido]
+DURACAO MEDIA: [30 min / 1h / variavel]
+PERFIL DOS CLIENTES: [descreva em 1 linha]
+
+GERE UM CHECKLIST COM:
+- 5 itens para ANTES (preparacao)
+- 3 itens para DURANTE (apoio)
+- 5 itens para DEPOIS (follow-up)
+
+Cada item deve ser uma ACAO especifica (verbo + objeto).
+Formato: checkbox markdown (- [ ] acao)</div>
+</div>
+<!-- Tip box -->
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+<span class="mr-2">💡</span> Dica: versao minima
+        </h3>
+<p class="text-neutral-300">
+          Comece com a <strong>versao minima</strong> do checklist (3 itens essenciais por fase).
+          Adicione itens conforme o habito se consolida. Um checklist grande demais nao e usado.
+        </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Sua area</span>
+<p class="text-xs text-neutral-400 mt-1">Especifico</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Minimo</span>
+<p class="text-xs text-neutral-400 mt-1">Comece pequeno</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Acoes</span>
+<p class="text-xs text-neutral-400 mt-1">Verbo + objeto</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Evoluir</span>
+<p class="text-xs text-neutral-400 mt-1">Adicione aos poucos</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 6: Medindo resultados -->
+<section class="mb-16" data-inema-topic="modulo-5-1#topico-6" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">Medindo resultados</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m5-1-t6-p1">
+        Sem medicao, voce nao sabe se a IA esta ajudando.
+        Metricas simples mostram o <strong class="text-teal-400">antes e depois</strong> de forma objetiva.
+      </p>
+<!-- 4 metricas -->
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+<span class="mr-2">📊</span> 4 metricas para acompanhar
+        </h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Tempo por atendimento:</strong> quanto leva da preparacao ao follow-up</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Taxa de follow-up:</strong> % dos atendimentos com acompanhamento enviado</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Retorno de clientes:</strong> % que voltam ou indicam</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="text-teal-400 mt-1">•</span>
+<span><strong>Horas economizadas:</strong> tempo livre ganho por semana com IA</span>
+</li>
+</ul>
+</div>
+<!-- Warning box -->
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+<span class="mr-2">⚠️</span> Nao meca tudo
+        </h3>
+<p class="text-neutral-300">
+          Escolha <strong>2 metricas</strong> no maximo para comecar.
+          Medir tudo e nao medir nada. O importante e ter um ponto de comparacao antes vs depois.
+        </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Tempo</span>
+<p class="text-xs text-neutral-400 mt-1">Antes vs depois</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Follow-up</span>
+<p class="text-xs text-neutral-400 mt-1">Taxa de envio</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">Retorno</span>
+<p class="text-xs text-neutral-400 mt-1">Clientes voltam</p>
+</div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center">
+<span class="text-teal-400 font-bold text-sm">2 metricas</span>
+<p class="text-xs text-neutral-400 mt-1">Foco no essencial</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 hover:bg-teal-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Resumo do Modulo -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center">
+<span class="mr-3">✅</span> Resumo do Modulo
+        </h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3">
+<span class="text-teal-400 mt-1">✓</span>
+<div>
+<strong class="text-white">Checklist em 3 fases</strong>
+<span class="text-neutral-400"> - antes, durante e depois</span>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="text-teal-400 mt-1">✓</span>
+<div>
+<strong class="text-white">Preparacao com IA</strong>
+<span class="text-neutral-400"> - briefing automatico em 5 minutos</span>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="text-teal-400 mt-1">✓</span>
+<div>
+<strong class="text-white">Follow-up automatizado</strong>
+<span class="text-neutral-400"> - resumo + e-mail + proximos passos</span>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="text-teal-400 mt-1">✓</span>
+<div>
+<strong class="text-white">Personalizacao</strong>
+<span class="text-neutral-400"> - adapte para sua profissao e fluxo</span>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="text-teal-400 mt-1">✓</span>
+<div>
+<strong class="text-white">Medicao simples</strong>
+<span class="text-neutral-400"> - 2 metricas para provar o impacto</span>
+</div>
+</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-teal-400 mb-2">Proximo Modulo:</h3>
+<p class="text-neutral-300">5.2 - Rotina semanal de uso da IA</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">
+            ← Voltar para Trilha
+          </a>
+<a class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors" href="modulo-5-2.html">
+            Proximo Modulo →
+          </a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Profissional Liberal Experiente com IA - 2026</p>
+</div>
+</footer>
+<script src="../../assets/learn.js"></script>
+<script>
+    function toggleTopic(b) {
+      const t = b.closest('.topic-item'),
+            e = t.querySelector('.topic-explanation'),
+            m = b.closest('.bg-dark-800');
+      m.querySelectorAll('.topic-explanation.active').forEach(x => {
+        if (x !== e) x.classList.remove('active');
+      });
+      e.classList.toggle('active');
+    }
+
+    const themeToggle = document.getElementById('theme-toggle'),
+          themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon'),
+          themeToggleLightIcon = document.getElementById('theme-toggle-light-icon'),
+          html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' ||
+        (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }
+  </script>
+</body>
+</html>

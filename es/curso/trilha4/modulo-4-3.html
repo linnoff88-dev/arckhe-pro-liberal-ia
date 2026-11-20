@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Módulo 4.3: Modelo de contenido para consolidar autoridad | Pro Liberal IA</title>
+<!-- ANTI-FOUC -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha4/modulo-4-3.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha4/modulo-4-3.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha4/modulo-4-3.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha4/modulo-4-3.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha4/modulo-4-3.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-4-3.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Asistente</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10" href="index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Plantillas</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Rutina</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-amber-400" href="../../index.html">Inicio</a><span>/</span>
+<a class="hover:text-amber-400" href="index.html">Ruta 4</a><span>/</span>
+<span class="text-amber-400">Módulo 4.3</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="4">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🏆 Modelo de contenido para generar autoridad</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Plantillas de publicaciones, artículos, videos cortos y calendario editorial. Construye tu autoridad profesional con IA en minutos al día.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Práctico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Plantilla</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<div aria-label="Progreso del módulo 4.3" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:4-3" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 de 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-amber-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="4-3" data-inema-track="4" id="conteudo">
+<!-- SVG: escada de autoridade -->
+<div class="rounded-2xl border border-amber-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Escalera de construcción de autoridad: invisible, presente, referente, autoridad" class="w-full h-auto" role="img" viewbox="0 0 800 220">
+<defs>
+<lineargradient id="m43-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fbbf24"></stop><stop offset="1" stop-color="#f59e0b"></stop></lineargradient>
+<filter height="180%" id="m43-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m43-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#f59e0b" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m43-grid)" height="220" width="800"></rect>
+<text fill="#fbbf24" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="400" y="25">Trayectoria de autoridad profesional</text>
+<g font-family="Inter,sans-serif" font-weight="600">
+<!-- Step 1: Invisible -->
+<rect fill="#1f1604" height="44" opacity="0.6" rx="8" stroke="#fbbf24" stroke-width="2" width="160" x="30" y="155"></rect>
+<text fill="#fbbf24" font-size="12" text-anchor="middle" x="110" y="182">Invisible</text>
+<text fill="#d4a030" font-size="10" font-weight="400" text-anchor="middle" x="110" y="150">Sin presencia en línea</text>
+<!-- Step 2: Present -->
+<rect fill="#1f1604" height="44" opacity="0.75" rx="8" stroke="#fbbf24" stroke-width="2" width="160" x="220" y="115"></rect>
+<text fill="#fbbf24" font-size="12" text-anchor="middle" x="300" y="142">Presente</text>
+<text fill="#d4a030" font-size="10" font-weight="400" text-anchor="middle" x="300" y="110">Publica con regularidad</text>
+<!-- Step 3: Reference -->
+<rect fill="#0e1b26" height="44" rx="8" stroke="#38bdf8" stroke-width="2" width="160" x="410" y="75"></rect>
+<text fill="#bfe6ff" font-size="12" text-anchor="middle" x="490" y="102">Referencia</text>
+<text fill="#7dd3fc" font-size="10" font-weight="400" text-anchor="middle" x="490" y="70">Las personas te recomiendan</text>
+<!-- Step 4: Authority -->
+<g filter="url(#m43-glow)">
+<rect fill="#1f1604" height="48" rx="10" stroke="url(#m43-grad)" stroke-width="2" width="170" x="600" y="38"></rect>
+</g>
+<text fill="#fbbf24" font-size="14" text-anchor="middle" x="685" y="68">Autoridad</text>
+<text fill="#fbbf24" font-size="10" font-weight="400" text-anchor="middle" x="685" y="33">Los clientes llegan a ti</text>
+</g>
+<!-- Dashed arrows -->
+<path d="M190,177 L220,137" fill="none" opacity="0.5" stroke="#fbbf24" stroke-dasharray="6 6" stroke-width="1.8"></path>
+<path d="M380,137 L410,97" fill="none" opacity="0.5" stroke="#fbbf24" stroke-dasharray="6 6" stroke-width="1.8"></path>
+<path d="M570,97 L600,62" fill="none" opacity="0.5" stroke="#fbbf24" stroke-dasharray="6 6" stroke-width="1.8"></path>
+</svg>
+</div>
+<!-- Topico 1 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🏆 Autoridad profesional</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t1-p1">
+<strong class="text-amber-400">Autoridad profesional</strong> y la percepción de que eres un referente en tu área. No viene solo del título o de los años de experiencia. Viene del contenido que publicas y de la constancia con la que te haces presente. La IA elimina la barrera de la producción: ahora solo tienes que decidirte a publicar.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Por qué importa la autoridad</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">•</span><span><strong>Mejores clientes:</strong> quien te encuentra a través de contenido ya llega precalificado</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">•</span><span><strong>Precio superior:</strong> la autoridad justifica honorarios más altos</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">•</span><span><strong>Referencias orgánicas:</strong> cuando publicas, la gente se acuerda de ti al momento de recomendarte</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">•</span><span><strong>Menos dependencia:</strong> no necesitas anuncios pagados para atraer clientes</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-3">✓ Qué construye autoridad</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Publicar contenido educativo con regularidad</li>
+<li>Compartir una opinión propia fundamentada</li>
+<li>Muestra los bastidores de la práctica (sin violar la confidencialidad)</li>
+<li>Responder las dudas del público con generosidad</li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-3">✗ Qué no funciona</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Autopromoción disfrazada de contenido</li>
+<li>Publicar solo cuando «haya tiempo» (sin frecuencia)</li>
+<li>Copiar lo que hacen otros profesionales</li>
+<li>Contenido genérico sin perspectiva personal</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Contenido</span><p class="text-xs text-neutral-400 mt-1">No el título</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Consistencia</span><p class="text-xs text-neutral-400 mt-1">Cada semana</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Nicho</span><p class="text-xs text-neutral-400 mt-1">Área específica</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">IA</span><p class="text-xs text-neutral-400 mt-1">Lo hace viable</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- Topico 2 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📱 Plantilla de publicación educativa</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t2-p1">
+        Las publicaciones educativas son el formato que más genera <strong class="text-amber-400">confianza y participación</strong> para profesionales independientes. La estructura es simple: gancho, contenido, CTA. Con la IA, produces 3-5 publicaciones por semana en menos de 30 minutos en total.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📱</span> Prompt: publicación para LinkedIn/Instagram</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-3-t2-prompt">Escreva um post educativo para [LinkedIn / Instagram]:
+
+PROFISSAO: [sua area]
+TEMA: [assunto do post]
+PUBLICO: [quem vai ler: empresarios, pacientes, etc.]
+
+ESTRUTURA:
+1. Gancho (1a linha que faz parar de rolar) - pergunta OU dado impactante
+2. Problema (2-3 linhas descrevendo a dor do leitor)
+3. Solucao (3-5 bullets com dicas praticas)
+4. CTA (pergunta ou convite para comentar/salvar)
+
+FORMATO: paragrafos curtos (1-2 linhas).
+Se Instagram: inclua sugestao de 5 hashtags relevantes.
+Maximo 200 palavras. Tom: educativo, confiante, sem arrogancia.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Publicaciones que funcionan</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Empiezan con un dato sorprendente o una pregunta</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Enseñan algo práctico en 60 segundos</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Terminan con una invitación a interactuar</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Reflejan una opinión y experiencia reales</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Publicaciones que alejan</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Autopromoción disfrazada de contenido</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Texto genérico que cualquier IA genera</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sin opinión propia (solo repite lo obvio)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Formato de «textazo» sin saltos de línea</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Gancho</span><p class="text-xs text-neutral-400 mt-1">primera línea contundente</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">200 palabras</span><p class="text-xs text-neutral-400 mt-1">Máximo</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Práctico</span><p class="text-xs text-neutral-400 mt-1">Consejos aplicables</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">CTA</span><p class="text-xs text-neutral-400 mt-1">Invitación a actuar</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- Topico 3 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">📰 Plantilla de artículo/newsletter</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t3-p1">
+        Los artículos largos y los boletines construyen <strong class="text-amber-400">autoridad profunda</strong>. Mientras las publicaciones educan en 60 segundos, los artículos demuestran dominio técnico y construyen una audiencia fiel por correo electrónico. Un boletín semanal es la mejor inversión de tiempo para ganar autoridad.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📰</span> Prompt: artículo/boletín informativo</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-3-t3-prompt">Escreva um artigo profissional / newsletter:
+
+PROFISSAO: [sua area]
+TEMA: [assunto principal]
+OBJETIVO: [educar / posicionar / gerar leads]
+PUBLICO: [quem vai ler]
+TAMANHO: [800-1200 palavras]
+
+ESTRUTURA:
+1. Titulo magnetico (gera curiosidade, nao clickbait)
+2. Introducao com o problema que vai resolver (2 paragrafos)
+3. Desenvolvimento com dados, exemplos e sua opiniao (3-4 secoes)
+4. Conclusao com posicionamento claro
+5. CTA: assinar newsletter / agendar consulta / comentar
+
+Inclua: 1 estatistica relevante, 1 exemplo real da sua pratica
+(pode ser anonimizado), sua opiniao profissional sobre o tema.
+Tom: tecnico mas acessivel. Nao academico.</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo: boletín semanal</h3>
+<p class="text-neutral-300">Una <strong>boletín semanal</strong> y es la mejor inversión de tiempo para ganar autoridad. Con la IA, produces una edición en 20 minutos. El secreto es mantener un formato fijo (ej.: 1 idea + 1 caso + 1 consejo) para que el lector sepa qué esperar cada semana.</p>
+</div>
+<div class="bg-amber-900/20 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">⚡</span> Formato fijo sugerido</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center">
+<div class="text-amber-400 font-bold text-lg mb-1">1 insight</div>
+<p class="text-xs text-neutral-400">Observación de la semana sobre tu área</p>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center">
+<div class="text-amber-400 font-bold text-lg mb-1">1 caso</div>
+<p class="text-xs text-neutral-400">Situación real (anonimizada) con aprendizaje</p>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center">
+<div class="text-amber-400 font-bold text-lg mb-1">1 consejo</div>
+<p class="text-xs text-neutral-400">Algo práctico que el lector pueda aplicar hoy</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">800-1200</span><p class="text-xs text-neutral-400 mt-1">Palabras</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Opinión</span><p class="text-xs text-neutral-400 mt-1">Tu perspectiva</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Datos</span><p class="text-xs text-neutral-400 mt-1">1 estadística</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Semanal</span><p class="text-xs text-neutral-400 mt-1">Frecuencia ideal</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- Topico 4 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🎥 Plantilla de video corto</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t4-p1">
+        El video corto (Reels, TikTok, Shorts) es el formato con <strong class="text-amber-400">mayor alcance orgánico</strong> en 2026. La IA escribe el guion completo. Tú solo tienes que grabar y publicar. Sin cámara profesional ni edición compleja: solo tú, el celular y un guion listo.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎥</span> Prompt: guion para Reels/TikTok</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-3-t4-prompt">Escreva um roteiro de video curto (30-60 segundos):
+
+PROFISSAO: [sua area]
+TEMA: [assunto do video]
+FORMATO: [Reels / TikTok / Shorts]
+
+ESTRUTURA DO ROTEIRO:
+1. HOOK (0-3s): frase que prende atencao - pergunta ou afirmacao provocativa
+2. PROBLEMA (3-10s): descreva a dor do publico em 1-2 frases
+3. SOLUCAO (10-40s): 3 dicas rapidas e praticas
+4. CTA (40-60s): "Salve esse video" ou "Me segue para mais dicas de [area]"
+
+FORMATO DE SAIDA:
+- Roteiro completo com marcacao de tempo
+- Sugestao de texto na tela (legendas/overlay)
+- Sugestao de musica/som de fundo
+- 5 hashtags relevantes
+
+Tom: confiante, direto, como se estivesse conversando.
+Linguagem: oral, nao escrita.</pre>
+</div>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎬</span> Estructura del video perfecto</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Hook (0-3s):</strong> "¿Sabías que...?" / "Deja de hacer esto en tu [área]"</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Problema (3-10s):</strong> describe la situación que vive el público</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Solución (10-40s):</strong> 3 puntos rápidos, numerados en pantalla</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>CTA (40-60s):</strong> guardar, seguir o comentar</span></li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo: sesión de grabación por lotes</h3>
+<p class="text-neutral-300">Genera 5 guiones de una vez con la IA, reserva 30 minutos de un día para grabarlos todos y programa las publicaciones a lo largo de la semana. Es más eficiente que grabar 1 por día.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">30-60s</span><p class="text-xs text-neutral-400 mt-1">Duración ideal</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Hook de 3 s</span><p class="text-xs text-neutral-400 mt-1">Capta la atención</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">3 consejos</span><p class="text-xs text-neutral-400 mt-1">Contenido rápido</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Subtítulos</span><p class="text-xs text-neutral-400 mt-1">Texto en pantalla</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- Topico 5 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📅 Calendario editorial con IA</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t5-p1">
+        La mayor barrera para publicar contenido es la falta de planificación. Con un <strong class="text-amber-400">calendario editorial generado por la IA</strong>, planificas 1 mes entero en 30 minutos. Sin esto, dependes de la inspiración (que rara vez aparece en el momento oportuno).
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📅</span> Prompt: calendario de 1 mes</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-3-t5-prompt">Crie um calendario editorial de 1 mes para um profissional liberal:
+
+PROFISSAO: [sua area]
+PLATAFORMAS: [LinkedIn, Instagram, Newsletter]
+PILARES DE CONTEUDO: [ex: dicas praticas, casos reais, bastidores, opiniao]
+FREQUENCIA: [ex: 3 posts/semana + 1 newsletter/semana]
+
+PARA CADA PUBLICACAO, INCLUA:
+- Data e dia da semana
+- Plataforma
+- Formato (texto, carrossel, video curto, artigo)
+- Tema/titulo
+- Angulo (qual pilar de conteudo)
+- Gancho da 1a linha (ja redigido)
+
+Organize em tabela. Alterne formatos e pilares para variedade.
+Inclua 2 datas comemorativas relevantes para a area.</pre>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Genera el calendario</h4>
+<p class="text-sm text-neutral-300">1 vez al mes, dedica 10 minutos a este prompt. Revisa y ajusta los temas según lo que esté pasando en tu área.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Produce por lotes</h4>
+<p class="text-sm text-neutral-300">Dedica 1 hora por semana a generar con IA todo el contenido de la semana siguiente. Revisa cada pieza en 5 minutos.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Programa y publica</h4>
+<p class="text-sm text-neutral-300">Usa la programación nativa de LinkedIn/Instagram o herramientas como Buffer/Later. Automatiza para no depender de acordarte.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">30 min</span><p class="text-xs text-neutral-400 mt-1">Planificación mensual</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Pilares</span><p class="text-xs text-neutral-400 mt-1">3-4 temas fijos</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Lote</span><p class="text-xs text-neutral-400 mt-1">Produce en conjunto</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Programa</span><p class="text-xs text-neutral-400 mt-1">Publica en automático</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- Topico 6 -->
+<section class="mb-16" data-inema-topic="modulo-4-3#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🚀 De la teoría a la práctica</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-3-t6-p1">
+        El conocimiento sin acción no genera resultados. Tu tarea ahora: <strong class="text-amber-400">publica hoy tu primera pieza de contenido</strong>. Usa cualquiera de las plantillas de este módulo. No esperes el momento perfecto: empieza sin que quede perfecto y mejora con el tiempo.
+      </p>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Ejercicio: publica hoy</h3>
+<ol class="space-y-3 text-neutral-300 list-decimal list-inside">
+<li><strong>Elige el formato</strong> más cómodo (publicación, artículo o video)</li>
+<li><strong>Usa el prompt</strong> correspondiente con tus datos reales</li>
+<li><strong>Revisa en 5 minutos</strong> (ajusta el tono, los datos y la opinión personal)</li>
+<li><strong>Publica.</strong> No esperes a que quede perfecto</li>
+<li><strong>Anota las métricas</strong> (me gusta, comentarios, visualizaciones)</li>
+</ol>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Trampa del perfeccionismo</h3>
+<p class="text-neutral-300">La mayoría de los profesionales nunca publica porque espera tener el contenido perfecto. <strong>El mejor contenido es el que se publica</strong>. Puedes editar, mejorar y aprender de los comentarios. Pero solo si publicas. El perfeccionismo es el enemigo número 1 de la autoridad.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Regla del 80/20</h3>
+<p class="text-neutral-300">Publica cuando esté <strong>80% satisfecho</strong>. El 20% restante de pulido rara vez cambia el resultado. Lo que sí cambia es la constancia a lo largo del tiempo. 3 publicaciones "buenas" por semana valen más que 1 publicación "perfecta" por mes.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Hoy</span><p class="text-xs text-neutral-400 mt-1">Publica ahora</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">80%</span><p class="text-xs text-neutral-400 mt-1">Lo suficientemente bueno</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Métricas</span><p class="text-xs text-neutral-400 mt-1">Anota los resultados</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Iterar</span><p class="text-xs text-neutral-400 mt-1">Mejora continuamente</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🏆</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Autoridad = contenido + constancia</strong><span class="text-neutral-400"> - no es un diploma, es presencia</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Publicación educativa</strong><span class="text-neutral-400"> - gancho + consejos + CTA en 200 palabras</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Artículo/newsletter</strong><span class="text-neutral-400"> - profundidad técnica accesible, semanal</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Video corto</strong><span class="text-neutral-400"> - guion de 30-60s listo para grabar</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Calendario editorial</strong><span class="text-neutral-400"> - 1 mes planificado en 30 minutos</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Acción inmediata</strong><span class="text-neutral-400"> - publica hoy, mejora después</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-amber-400 mb-2">Siguiente ruta:</h3>
+<p class="text-neutral-300">Ruta 5 - Rutina y práctica: lista de control, rutina semanal y siguientes pasos para consolidarlo todo.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-4-2.html">← Módulo anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors" href="../trilha5/index.html">Ruta 5: Rutina →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Profesional independiente con experiencia en IA - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script src="../../../assets/learn.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Track 3: The 10 Essential Prompts | Pro Liberal IA</title>
+<!-- ANTI-FOUC: bloqueante, ANTES do Tailwind -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<!-- Manifesto do curso (OBRIGATORIO em TODA pagina) -->
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - purple accent */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - nav colors */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s} .wf-a:nth-child(5){animation-delay:1s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha3/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha3/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha3/" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha3/" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="./" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha3/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html">
+<span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html">
+<span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistant</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html">
+<span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html">
+<span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html">
+<span class="sm:hidden">T5</span><span class="hidden sm:inline">Routine</span>
+</a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">
+        TRACK 3
+      </span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ The 10 Essential Prompts</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Ten prompts ready to copy, paste, and use every day. From client service to strategy, each prompt is designed for independent professionals who want immediate results without reinventing the wheel.
+      </p>
+<!-- Hero SVG -->
+<div class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mt-8 overflow-hidden">
+<svg aria-label="10-prompt workflow: you ask a question, the prompt structures it, and AI produces a professional result" class="w-full h-auto" role="img" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="t3i-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#c084fc"></stop><stop offset="1" stop-color="#a855f7"></stop>
+</lineargradient>
+<filter height="180%" id="t3i-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="t3i-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#a855f7" opacity="0.12" r="1.3"></circle>
+</pattern>
+<marker id="t3i-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#c084fc"></path></marker>
+<marker id="t3i-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#t3i-grid)" height="200" width="1000" x="0" y="0"></rect>
+<!-- Voce -->
+<g filter="url(#t3i-glow)">
+<rect fill="#1a1230" height="80" rx="14" stroke="url(#t3i-grad)" stroke-width="2.5" width="150" x="30" y="60"></rect>
+</g>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="105" y="95">Your request</text>
+<text fill="#d8b4fe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="105" y="118">"I need..."</text>
+<!-- Setas -->
+<g fill="none" opacity="0.55" stroke="#c084fc" stroke-width="2">
+<path d="M180,80 C250,80 270,50 350,50" marker-end="url(#t3i-ah)"></path>
+<path d="M180,100 L350,100" marker-end="url(#t3i-ah)"></path>
+<path d="M180,120 C250,120 270,150 350,150" marker-end="url(#t3i-ah)"></path>
+</g>
+<!-- Prompts -->
+<g font-family="Inter,sans-serif" font-size="12" font-weight="600">
+<g class="wf-a"><rect fill="#0e1b26" height="32" rx="9" stroke="#38bdf8" stroke-width="2" width="140" x="350" y="34"></rect><text fill="#bfe6ff" text-anchor="middle" x="420" y="55">#1-4 Client service</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="32" rx="9" stroke="#38bdf8" stroke-width="2" width="140" x="350" y="84"></rect><text fill="#bfe6ff" text-anchor="middle" x="420" y="105">#5-7 Production</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="32" rx="9" stroke="#38bdf8" stroke-width="2" width="140" x="350" y="134"></rect><text fill="#bfe6ff" text-anchor="middle" x="420" y="155">#8-10 Strategy</text></g>
+</g>
+<!-- Setas para resultado -->
+<g fill="none" opacity="0.55" stroke="#38bdf8" stroke-width="2">
+<path d="M490,50 C560,50 580,100 640,100" marker-end="url(#t3i-ahc)"></path>
+<path d="M490,100 L640,100" marker-end="url(#t3i-ahc)"></path>
+<path d="M490,150 C560,150 580,100 640,100" marker-end="url(#t3i-ahc)"></path>
+</g>
+<!-- Resultado -->
+<g filter="url(#t3i-glow)">
+<rect fill="#1a1230" height="70" rx="14" stroke="url(#t3i-grad)" stroke-width="2.5" width="170" x="640" y="65"></rect>
+</g>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="725" y="95">Result</text>
+<text fill="#d8b4fe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="725" y="115">ready to use</text>
+<!-- 10 prompts label -->
+<rect fill="#1a1230" height="40" rx="10" stroke="#c084fc" stroke-width="2" width="110" x="860" y="80"></rect>
+<text fill="#d8b4fe" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="915" y="105">10 prompts</text>
+</svg>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-purple-400">3</div>
+<div class="text-xs text-neutral-400">Modules</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-purple-400">18</div>
+<div class="text-xs text-neutral-400">Topics</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-purple-400">~2h</div>
+<div class="text-xs text-neutral-400">Duration</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-purple-400">Practical</div>
+<div class="text-xs text-neutral-400">Level</div>
+</div>
+</div>
+<!-- Medidor de progresso da trilha -->
+<div aria-label="Track 3 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter mt-6" data-inema-meter="trilha:3" role="progressbar">
+<span class="inema-meter-pct text-sm text-purple-400 font-semibold">0%</span>
+<span class="inema-meter-count text-sm text-neutral-400 ml-2">0 of 18</span>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- MAPA DA TRILHA -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-6">Learning path map</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 p-5 transition-all" href="#modulo-3-1">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold text-sm">3.1</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="font-semibold mb-1 group-hover:text-purple-400 transition-colors">📞 Customer Service Prompts</h3>
+<p class="text-xs text-neutral-400">Prompts #1–#4: client communication</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 p-5 transition-all" href="#modulo-3-2">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold text-sm">3.2</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="font-semibold mb-1 group-hover:text-purple-400 transition-colors">📝 Production Prompts</h3>
+<p class="text-xs text-neutral-400">Prompts #5–#7: documents and analysis</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 p-5 transition-all" href="#modulo-3-3">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold text-sm">3.3</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="font-semibold mb-1 group-hover:text-purple-400 transition-colors">📊 Strategy Prompts</h3>
+<p class="text-xs text-neutral-400">Prompts #8–#10: planning and growth</p>
+</a>
+</div>
+</section>
+<!-- VISAO GERAL DOS 10 PROMPTS -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-6">Overview of the 10 prompts</h2>
+<p class="text-neutral-300 mb-6">Each prompt was designed to address a specific day-to-day need for an independent professional. Copy, customize, and use it right away.</p>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border border-dark-600 rounded-xl overflow-hidden">
+<thead>
+<tr class="bg-dark-800">
+<th class="text-left p-3 text-purple-400 font-semibold border-b border-dark-600">#</th>
+<th class="text-left p-3 text-purple-400 font-semibold border-b border-dark-600">Prompt</th>
+<th class="text-left p-3 text-purple-400 font-semibold border-b border-dark-600">Category</th>
+<th class="text-left p-3 text-purple-400 font-semibold border-b border-dark-600">When to use</th>
+<th class="text-left p-3 text-purple-400 font-semibold border-b border-dark-600">Time saved</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-dark-600">
+<tr class="bg-dark-900"><td class="p-3 text-purple-400 font-bold">1</td><td class="p-3 text-neutral-300">Pre-appointment preparation</td><td class="p-3 text-neutral-400">Customer service</td><td class="p-3 text-neutral-400">Before consultations and meetings</td><td class="p-3 text-neutral-300">15 min/appointment</td></tr>
+<tr class="bg-dark-800"><td class="p-3 text-purple-400 font-bold">2</td><td class="p-3 text-neutral-300">Professional email</td><td class="p-3 text-neutral-400">Customer service</td><td class="p-3 text-neutral-400">All email communication</td><td class="p-3 text-neutral-300">5-10 min/email</td></tr>
+<tr class="bg-dark-900"><td class="p-3 text-purple-400 font-bold">3</td><td class="p-3 text-neutral-300">Professional WhatsApp</td><td class="p-3 text-neutral-400">Customer service</td><td class="p-3 text-neutral-400">Quick messages for clients</td><td class="p-3 text-neutral-300">2-3 min/message</td></tr>
+<tr class="bg-dark-800"><td class="p-3 text-purple-400 font-bold">4</td><td class="p-3 text-neutral-300">Meeting minutes</td><td class="p-3 text-neutral-400">Customer service</td><td class="p-3 text-neutral-400">After meetings and hearings</td><td class="p-3 text-neutral-300">20-30 min/minutes</td></tr>
+<tr class="bg-dark-900"><td class="p-3 text-purple-400 font-bold">5</td><td class="p-3 text-neutral-300">Document draft</td><td class="p-3 text-neutral-400">Production</td><td class="p-3 text-neutral-400">Opinions, expert reports, reports</td><td class="p-3 text-neutral-300">1-2h/document</td></tr>
+<tr class="bg-dark-800"><td class="p-3 text-purple-400 font-bold">6</td><td class="p-3 text-neutral-300">Data analysis</td><td class="p-3 text-neutral-400">Production</td><td class="p-3 text-neutral-400">Numbers that need a narrative</td><td class="p-3 text-neutral-300">30 min/analysis</td></tr>
+<tr class="bg-dark-900"><td class="p-3 text-purple-400 font-bold">7</td><td class="p-3 text-neutral-300">Review and improve</td><td class="p-3 text-neutral-400">Production</td><td class="p-3 text-neutral-400">Before sending any text</td><td class="p-3 text-neutral-300">10-15 min/text</td></tr>
+<tr class="bg-dark-800"><td class="p-3 text-purple-400 font-bold">8</td><td class="p-3 text-neutral-300">Strategic planning</td><td class="p-3 text-neutral-400">Strategy</td><td class="p-3 text-neutral-400">Start of quarter</td><td class="p-3 text-neutral-300">2-3h/plan</td></tr>
+<tr class="bg-dark-900"><td class="p-3 text-purple-400 font-bold">9</td><td class="p-3 text-neutral-300">Authority-building content</td><td class="p-3 text-neutral-400">Strategy</td><td class="p-3 text-neutral-400">Weekly (posts, articles)</td><td class="p-3 text-neutral-300">1h/content</td></tr>
+<tr class="bg-dark-800"><td class="p-3 text-purple-400 font-bold">10</td><td class="p-3 text-neutral-300">Market analysis</td><td class="p-3 text-neutral-400">Strategy</td><td class="p-3 text-neutral-400">Monthly or before making decisions</td><td class="p-3 text-neutral-300">2-4h/analysis</td></tr>
+</tbody>
+</table>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-lg">10</span><p class="text-xs text-neutral-400 mt-1">ready-to-use prompts</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-lg">5-10h</span><p class="text-xs text-neutral-400 mt-1">saved/week</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-lg">3</span><p class="text-xs text-neutral-400 mt-1">categories</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-lg">100%</span><p class="text-xs text-neutral-400 mt-1">copy and use</p></div>
+</div>
+</section>
+<!-- PRE-REQUISITOS -->
+<section class="mb-12">
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Recommended prerequisite</h3>
+<p class="text-neutral-300">To get the most out of this track, it's recommended that you complete the <a class="text-blue-400 hover:text-blue-300 underline" href="../trilha2/index.html">Track 2: Your Professional Assistant</a>. Prompts work best when you already have an assistant configured with your professional context, tone of voice, and knowledge base. If you haven’t done that yet, the prompts still work, but the result will be generic instead of personalized.</p>
+</div>
+</section>
+<!-- CONTEUDO DETALHADO -->
+<h2 class="text-2xl font-bold mb-6">Detailed content</h2>
+<!-- MODULO 3.1 -->
+<div class="bg-dark-800 rounded-xl border border-dark-600 mb-6" data-inema-module="3-1" data-inema-track="3" id="modulo-3-1">
+<div class="p-6 border-b border-dark-600">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold">3.1</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">📞 Customer Service and Communication Prompts (#1-#4)</h3>
+<p class="text-neutral-400 text-sm">Four ready-to-use prompts for client meeting preparation, emails, professional WhatsApp messages, and meeting minutes.</p>
+<div aria-label="Module 3.1 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter mt-3" data-inema-meter="modulo:3-1" role="progressbar">
+<span class="inema-meter-pct text-xs text-purple-400">0%</span>
+<span class="inema-meter-count text-xs text-neutral-400 ml-1">0 of 6</span>
+</div>
+</div>
+<div class="divide-y divide-dark-600">
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+<span class="text-lg">📞</span>
+<div><span class="font-medium">Prompt #1: Pre-appointment preparation</span><span class="text-neutral-500 text-sm ml-2">- arrive prepared in 2 minutes</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">A prompt that takes case details and generates a summary, outstanding items, key questions, and suggested next steps. Works for consultations, meetings, and hearings.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">A prepared professional inspires confidence. AI summarizes in seconds what would take you 15 minutes to reread in patient records and notes.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Pre-service briefing. History as input. AI-suggested questions. Automated follow-up.</p></div>
+</div>
+</div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+<span class="text-lg">📧</span>
+<div><span class="font-medium">Prompt #2: Professional email</span><span class="text-neutral-500 text-sm ml-2">- write in your tone in 30 seconds</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt template for generating professional emails in any tone and for any situation: reply, follow-up, proposal, payment reminder, thank-you.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Emails consume 20-30% of a solo professional’s day. With this prompt, you describe what you want to say, and AI generates the finished text in your style.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Parameters: recipient, subject, tone, objective. Output with greeting, body, CTA, and sign-off. Word limit.</p></div>
+</div>
+</div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+<span class="text-lg">💬</span>
+<div><span class="font-medium">Prompt #3: WhatsApp message</span><span class="text-neutral-500 text-sm ml-2">- short, direct, and professional</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt optimized for short WhatsApp messages: confirmations, reminders, quick replies, and informal announcements that maintain professionalism.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">WhatsApp is the channel clients use most in Brazil. Poorly written messages come across as unprofessional. Well-written messages convey attentiveness and care.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Approachable but professional tone. Maximum of 3-4 lines. Moderate emoji use. Clear CTA at the end.</p></div>
+</div>
+</div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+<span class="text-lg">📋</span>
+<div><span class="font-medium">Prompt #4: Meeting minutes</span><span class="text-neutral-500 text-sm ml-2">- notes become an official document</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt that turns rough meeting notes into structured minutes with: attendees, agenda, decisions, next steps, and owners.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Well-written meeting minutes prevent misunderstandings and serve as a legal record. AI can turn even a transcribed recording into professional minutes in seconds.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Structure: header, participants, agenda, decisions, follow-ups. Formal format. Identification of action items.</p></div>
+</div>
+</div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+<span class="text-lg">🔧</span>
+<div><span class="font-medium">Adapting the prompts to your field</span><span class="text-neutral-500 text-sm ml-2">- customization by profession</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Techniques for adapting the 4 generic prompts to the specific realities of your profession: terminology, formats, constraints, and appropriate tone.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">A generic prompt works. A prompt tailored to your field works 3x better. The difference is in the details: jargon, format, and ethical constraints.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Variable substitution. Adding field-specific constraints. Examples for law, healthcare, accounting, and engineering.</p></div>
+</div>
+</div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+<span class="text-lg">🎯</span>
+<div><span class="font-medium">Integrated exercise</span><span class="text-neutral-500 text-sm ml-2">- use all 4 prompts in a real case</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4">
+<div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+<div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">A hands-on exercise where you apply the 4 prompts in sequence to a real case from your practice: prepare for the appointment, draft the email, send the message, and write the minutes.</p></div>
+<div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Using the prompts together shows how they connect in a real workflow. They aren’t isolated tools; they’re parts of a system.</p></div>
+<div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Complete practical case. Prompt sequence. Result evaluation. Post-exercise adjustments.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+<button class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors" onclick="openModal('modal-3-1')">View in Modal</button>
+<a class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors" href="modulo-3-1.html">View Full</a>
+</div>
+</div>
+<!-- MODULO 3.2 -->
+<div class="bg-dark-800 rounded-xl border border-dark-600 mb-6" data-inema-module="3-2" data-inema-track="3" id="modulo-3-2">
+<div class="p-6 border-b border-dark-600">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold">3.2</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">📝 Production Prompts (#5-#7)</h3>
+<p class="text-neutral-400 text-sm">Three prompts for drafting documents, analyzing data, and turning notes into professional content.</p>
+<div aria-label="Module 3.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter mt-3" data-inema-meter="modulo:3-2" role="progressbar">
+<span class="inema-meter-pct text-xs text-purple-400">0%</span>
+<span class="inema-meter-count text-xs text-neutral-400 ml-1">0 of 6</span>
+</div>
+</div>
+<div class="divide-y divide-dark-600">
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+<span class="text-lg">📄</span>
+<div><span class="font-medium">Prompt #5: Document draft</span><span class="text-neutral-500 text-sm ml-2">- opinion, expert report, report</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt that turns rough notes into a structured draft of any professional document with standard sections for your field.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">It eliminates the blank page. AI generates 80% of the draft, and you refine the 20% that requires professional judgment.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Raw data as input. Standard format as instructions. [COMPLETE] markers for sections that need human review.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+<span class="text-lg">📊</span>
+<div><span class="font-medium">Prompt #6: Data Analysis</span><span class="text-neutral-500 text-sm ml-2">- numbers become insights</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt for analyzing numerical data (financial, clinical, performance) and generating actionable insights in accessible language.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Raw data doesn’t communicate. This prompt turns spreadsheets and numbers into narratives you can use in meetings and reports.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Tabular data as input. Trend analysis. Comparisons. Recommendations based on the numbers.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+<span class="text-lg">🔎</span>
+<div><span class="font-medium">Prompt #7: Review and Improvement</span><span class="text-neutral-500 text-sm ml-2">- refine any text</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt that takes a finished text and reviews its clarity, tone, and errors, and suggests improvements without losing your authorial voice.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Even good writing can be improved. AI identifies redundancies, softens an aggressive tone, and suggests restructuring that you can accept or reject.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Parameterized review (focus on clarity, tone, length). Simulated track changes. Preserve the author's voice.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+<span class="text-lg">🔧</span>
+<div><span class="font-medium">Adapting to your profession</span><span class="text-neutral-500 text-sm ml-2">- formats and restrictions by field</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">How to adjust production prompts to the specifics of your field: legal formatting, medical language, accounting standards.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">A medical report differs from a legal opinion. Prompts are the foundation; adapting them is what makes them truly effective.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Formats by profession. Technical standards as constraints. Practical adaptation examples.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+<span class="text-lg">📚</span>
+<div><span class="font-medium">Combining prompts in a chain</span><span class="text-neutral-500 text-sm ml-2">- one prompt feeds into the next</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt chaining technique: the output of the analysis prompt becomes the input for the drafting prompt, which then becomes the input for the review prompt.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Chained prompts produce better results than a single long prompt. Each step refines the previous one.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Prompt pipeline. Output as input. Iterative refinement. When to use a chain vs. a single prompt.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+<span class="text-lg">🎯</span>
+<div><span class="font-medium">Exercise: complete document</span><span class="text-neutral-500 text-sm ml-2">- from notes to the final product</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Hands-on exercise: take real notes from a case, apply the 3 prompts in sequence, and produce a complete professional document.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Practice reinforces learning. By the end of this exercise, you’ll have a real document ready to use.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">End-to-end practical case. Quality assessment. Time invested vs. time saved. Final refinements.</p></div></div></div>
+</div>
+</div>
+<div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+<button class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors" onclick="openModal('modal-3-2')">View in Modal</button>
+<a class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors" href="modulo-3-2.html">View Full</a>
+</div>
+</div>
+<!-- MODULO 3.3 -->
+<div class="bg-dark-800 rounded-xl border border-dark-600 mb-6" data-inema-module="3-3" data-inema-track="3" id="modulo-3-3">
+<div class="p-6 border-b border-dark-600">
+<div class="flex items-center justify-between mb-2">
+<span class="text-purple-400 font-bold">3.3</span>
+<span class="text-xs text-neutral-500">~40 min</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">📊 Strategy Prompts (#8-#10)</h3>
+<p class="text-neutral-400 text-sm">Three prompts for planning, authoritative content, and analyzing opportunities in your market.</p>
+<div aria-label="Module 3.3 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter mt-3" data-inema-meter="modulo:3-3" role="progressbar">
+<span class="inema-meter-pct text-xs text-purple-400">0%</span>
+<span class="inema-meter-count text-xs text-neutral-400 ml-1">0 of 6</span>
+</div>
+</div>
+<div class="divide-y divide-dark-600">
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+<span class="text-lg">📊</span>
+<div><span class="font-medium">Prompt #8: Strategic Planning</span><span class="text-neutral-500 text-sm ml-2">- 90-day outlook</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt that analyzes your current situation (revenue, clients, time) and generates a 90-day plan with goals, actions, and success metrics.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Independent professionals are always putting out fires. This prompt forces a strategic pause and generates an actionable roadmap.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Situational analysis. SMART goals. 90-day plan. KPIs by area. Monthly review.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+<span class="text-lg">📰</span>
+<div><span class="font-medium">Prompt #9: Thought Leadership Content</span><span class="text-neutral-500 text-sm ml-2">- posts, articles, and videos</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt for generating content that positions you as an authority: educational posts, articles, video scripts, and newsletters.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Professional authority attracts better clients. AI creates the draft; you validate it with your expertise and publish it.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Educational vs. promotional content. Expert tone. Editorial calendar. Platform-specific adaptation.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+<span class="text-lg">🔎</span>
+<div><span class="font-medium">Prompt #10: Market analysis</span><span class="text-neutral-500 text-sm ml-2">- opportunities and trends</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Prompt for analyzing your field's market: competitors, trends, opportunities, and threats. Works as an AI-assisted mini-SWOT analysis.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Understand the market and what sets apart professionals who grow from those who stagnate. AI organizes information you already have into a structured analysis.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">SWOT analysis. Benchmarking. Industry trends. Niche identification. Differentiated positioning.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+<span class="text-lg">🔧</span>
+<div><span class="font-medium">Adapting strategic prompts</span><span class="text-neutral-500 text-sm ml-2">- by size and maturity</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Adjustments to strategic prompts based on your business stage: just starting out, growing, or established.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">A professional with 2 years of experience has different needs from someone with 20 years. The prompts need to reflect that.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Business stage. Priorities by phase. Relevant metrics. Level of ambition.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+<span class="text-lg">📚</span>
+<div><span class="font-medium">Integrating the 10 prompts</span><span class="text-neutral-500 text-sm ml-2">- complete system</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">An integrated view of how the 10 prompts connect in day-to-day work: client service feeds production, which feeds strategy, which refines client service.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Standalone prompts help. Integrated prompts transform. A systemic perspective is what separates casual use from professional use.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Client service-production-strategy cycle. Feedback loop. Prompt evolution through practice.</p></div></div></div>
+</div>
+<div class="topic-item">
+<button class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left" onclick="toggleTopic(this)">
+<span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+<span class="text-lg">🎯</span>
+<div><span class="font-medium">Exercise: 30-day plan</span><span class="text-neutral-500 text-sm ml-2">- apply everything to your business</span></div>
+</button>
+<div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-purple-400 font-semibold">What it is:</span><p class="text-neutral-300 text-sm">Final exercise: use the 3 strategic prompts to generate a 30-day plan for your business, with goals, content, and market analysis.</p></div><div><span class="text-purple-400 font-semibold">Why learn:</span><p class="text-neutral-300 text-sm">Leave this learning path with a concrete plan in hand. This isn't theory; it's a document you'll put into action over the next 4 weeks.</p></div><div><span class="text-purple-400 font-semibold">Key concepts:</span><p class="text-neutral-300 text-sm">Action plan. Weekly goals. Scheduled content. Review at the end of the month.</p></div></div></div>
+</div>
+</div>
+<div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+<button class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors" onclick="openModal('modal-3-3')">View in Modal</button>
+<a class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors" href="modulo-3-3.html">View Full</a>
+</div>
+</div>
+<!-- COMO USAR ESTA TRILHA -->
+<section class="mb-12 mt-8">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<h3 class="text-2xl font-bold mb-4">How to use this learning path</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<div class="flex items-center space-x-3 mb-3">
+<span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center">1</span>
+<h4 class="font-semibold text-purple-400">Read the prompt</h4>
+</div>
+<p class="text-sm text-neutral-300">Each topic presents a complete prompt with detailed instructions. Read it to understand the structure and purpose.</p>
+</div>
+<div>
+<div class="flex items-center space-x-3 mb-3">
+<span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center">2</span>
+<h4 class="font-semibold text-purple-400">Copy and adapt</h4>
+</div>
+<p class="text-sm text-neutral-300">Copy the prompt and replace the fields in [brackets] with your real information. The fields are self-explanatory.</p>
+</div>
+<div>
+<div class="flex items-center space-x-3 mb-3">
+<span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center">3</span>
+<h4 class="font-semibold text-purple-400">Use and refine</h4>
+</div>
+<p class="text-sm text-neutral-300">Paste it into your AI assistant (ChatGPT, Claude, or Gemini). Evaluate the result. Adjust the prompt as needed. Save your version.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- DICA FINAL -->
+<section class="mb-12">
+<div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center"><span class="mr-2">⚡</span> Tip for getting the most out of it</h3>
+<p class="text-neutral-300 text-sm mb-3">
+          Don't try to use all 10 prompts at once. Start with the 2 that address your biggest pain points today. In most cases, prompts #1 (pre-service) and #2 (email) deliver results fastest. Master those two, then move on to the others.
+        </p>
+<p class="text-neutral-300 text-sm mb-3">
+          Each prompt also works as a starting point. As you use it, you’ll notice adjustments that make sense for your practice. Save your customized versions in a separate document so you don’t lose the improvements you make over time.
+        </p>
+<p class="text-neutral-300 text-sm">
+          By the end of the 3 weeks of practice, you will have a personal library of prompts tailored to your profession. This library is the most valuable asset you build in this course: it stays with you regardless of which AI tool you use in the future.
+        </p>
+</div>
+</section>
+<!-- NAVEGACAO -->
+<div class="flex flex-col sm:flex-row gap-4 mt-12">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="../trilha2/index.html">
+        ← Track 2: Assistant
+      </a>
+<a class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors" href="../trilha4/index.html">
+        Track 4: Templates →
+      </a>
+</div>
+</main>
+<!-- MODALS -->
+<div class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" id="modal-3-1" onclick="if(event.target === this) closeModal()">
+<div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+<div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+<div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.1</span><span class="font-semibold">Customer service and communication prompts</span></div>
+<button class="text-neutral-400 hover:text-white text-2xl leading-none" onclick="closeModal()">×</button>
+</div>
+<iframe class="flex-1 w-full rounded-b-xl" src="modulo-3-1.html"></iframe>
+</div>
+</div>
+<div class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" id="modal-3-2" onclick="if(event.target === this) closeModal()">
+<div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+<div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+<div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.2</span><span class="font-semibold">Production prompts</span></div>
+<button class="text-neutral-400 hover:text-white text-2xl leading-none" onclick="closeModal()">×</button>
+</div>
+<iframe class="flex-1 w-full rounded-b-xl" src="modulo-3-2.html"></iframe>
+</div>
+</div>
+<div class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" id="modal-3-3" onclick="if(event.target === this) closeModal()">
+<div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+<div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+<div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.3</span><span class="font-semibold">Strategy prompts</span></div>
+<button class="text-neutral-400 hover:text-white text-2xl leading-none" onclick="closeModal()">×</button>
+</div>
+<iframe class="flex-1 w-full rounded-b-xl" src="modulo-3-3.html"></iframe>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Experienced Independent Professional with AI - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) exp.classList.remove('active');
+      });
+      explanation.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    }
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => modal.classList.add('hidden'));
+      document.body.style.overflow = 'auto';
+    }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>
+    if (window.INEMA && typeof window.INEMA.init === "function") {
+      window.INEMA.init();
+    }
+  </script>
+</body>
+</html>

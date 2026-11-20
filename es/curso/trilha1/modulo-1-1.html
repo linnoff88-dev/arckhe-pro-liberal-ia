@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Módulo 1.1: Lo que la IA puede hacer por ti | Pro Liberal IA</title>
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "pro-liberal-ia",
+    "tracks": [
+      { "n": "1", "title": "Fundamentos da IA", "modules": [
+        { "id": "1-1", "title": "O que a IA pode fazer por voce", "topics": 6, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "Como a IA pensa", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" },
+        { "id": "1-3", "title": "Escolhendo sua ferramenta", "topics": 6, "href": "curso/trilha1/modulo-1-3.html" }
+      ]},
+      { "n": "2", "title": "Seu Assistente Profissional", "modules": [
+        { "id": "2-1", "title": "Criando seu assistente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Ensinando o contexto", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" },
+        { "id": "2-3", "title": "Fluxo de trabalho diario", "topics": 6, "href": "curso/trilha2/modulo-2-3.html" }
+      ]},
+      { "n": "3", "title": "Os 10 Prompts Essenciais", "modules": [
+        { "id": "3-1", "title": "Prompts de atendimento", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Prompts de producao", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" },
+        { "id": "3-3", "title": "Prompts de estrategia", "topics": 6, "href": "curso/trilha3/modulo-3-3.html" }
+      ]},
+      { "n": "4", "title": "Templates Profissionais", "modules": [
+        { "id": "4-1", "title": "Proposta comercial", "topics": 6, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Resposta para cliente", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" },
+        { "id": "4-3", "title": "Conteudo para autoridade", "topics": 6, "href": "curso/trilha4/modulo-4-3.html" }
+      ]},
+      { "n": "5", "title": "Rotina e Pratica", "modules": [
+        { "id": "5-1", "title": "Checklist de atendimento", "topics": 6, "href": "curso/trilha5/modulo-5-1.html" },
+        { "id": "5-2", "title": "Rotina semanal", "topics": 6, "href": "curso/trilha5/modulo-5-2.html" },
+        { "id": "5-3", "title": "Proximos passos", "topics": 6, "href": "curso/trilha5/modulo-5-3.html" }
+      ]}
+    ]
+  }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha1/modulo-1-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha1/modulo-1-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha1/modulo-1-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha1/modulo-1-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-1-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html">
+<span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html">
+<span class="sm:hidden">T2</span><span class="hidden sm:inline">Asistente</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html">
+<span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html">
+<span class="sm:hidden">T4</span><span class="hidden sm:inline">Plantillas</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html">
+<span class="sm:hidden">T5</span><span class="hidden sm:inline">Rutina</span>
+</a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Ruta 1</a>
+<span>/</span>
+<span class="text-emerald-400">Módulo 1.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="1">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Lo que la IA puede (y no puede) hacer por ti</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Descubre dónde la inteligencia artificial aporta valor real a tu profesión y dónde tu criterio y experiencia siguen siendo insustituibles.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoría</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<div aria-label="Progreso del módulo 1.1" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:1-1" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 de 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-emerald-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="1-1" data-inema-track="1" id="conteudo">
+<!-- TOPICO 1 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🎯 IA en el consultorio, la oficina y el taller</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t1-p1">
+        A <strong class="text-emerald-400">inteligencia artificial</strong> (un programa de computadora capaz de entender el lenguaje natural y generar texto, imágenes o análisis) ya está siendo usada por profesionales independientes como tú. No es ciencia ficción. Los abogados la usan para revisar contratos. Los médicos la usan para clasificar síntomas. Los contadores la usan para clasificar registros contables. Los arquitectos la usan para generar briefs iniciales de proyectos.
+      </p>
+<!-- SVG Futurista: Fan-out por profissao -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Diagrama que muestra cómo la IA se conecta con distintas profesiones: abogado, médico, contador, arquitecto" class="w-full h-auto" role="img" viewbox="0 0 900 220">
+<defs>
+<lineargradient id="m11-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m11-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m11-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#34d399" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m11-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#34d399"></path></marker>
+</defs>
+<rect fill="url(#m11-grid)" height="220" width="900" x="0" y="0"></rect>
+<g filter="url(#m11-glow)"><rect fill="#0e2018" height="70" rx="14" stroke="url(#m11-grad)" stroke-width="2" width="140" x="330" y="75"></rect></g>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="400" y="105">IA</text>
+<text fill="#6ee7b7" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="400" y="125">asistente</text>
+<g fill="none" opacity="0.55" stroke="#34d399" stroke-width="2">
+<path d="M470,95 C550,95 560,45 640,45" marker-end="url(#m11-ah)"></path>
+<path d="M470,105 C550,105 560,100 640,100" marker-end="url(#m11-ah)"></path>
+<path d="M470,115 C550,115 560,155 640,155" marker-end="url(#m11-ah)"></path>
+<path d="M470,125 C550,125 560,200 640,200" marker-end="url(#m11-ah)"></path>
+</g>
+<g font-family="Inter,sans-serif" font-size="13" font-weight="600">
+<g class="wf-a"><rect fill="#0e1b26" height="35" rx="9" stroke="#38bdf8" stroke-width="2" width="200" x="650" y="28"></rect><text fill="#bfe6ff" text-anchor="middle" x="750" y="50">Abogado - contratos</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="35" rx="9" stroke="#38bdf8" stroke-width="2" width="200" x="650" y="83"></rect><text fill="#bfe6ff" text-anchor="middle" x="750" y="105">Médico - triaje</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="35" rx="9" stroke="#38bdf8" stroke-width="2" width="200" x="650" y="138"></rect><text fill="#bfe6ff" text-anchor="middle" x="750" y="160">Contador - asientos</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="35" rx="9" stroke="#38bdf8" stroke-width="2" width="200" x="650" y="185"></rect><text fill="#bfe6ff" text-anchor="middle" x="750" y="207">Arquitecto - briefs</text></g>
+</g>
+</svg>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> Casos reales por profesión</h3>
+<div class="space-y-4 text-neutral-300">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1 font-bold">Derecho:</span><p class="text-sm">Revisión de cláusulas contractuales en minutos en vez de horas. Investigación de jurisprudencia con resumen automático. Borrador de demandas iniciales.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1 font-bold">Salud:</span><p class="text-sm">Triaje de síntomas para orientar la anamnesis. Resumen de artículos científicos recientes. Comunicación con pacientes en lenguaje accesible.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1 font-bold">Contabilidad:</span><p class="text-sm">Clasificación automática de registros. Generación de informes narrativos a partir de números. Respuestas estandarizadas para clientes.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1 font-bold">Arquitectura:</span><p class="text-sm">Generación de briefs de proyectos. Investigación de normas técnicas. Descripción de especificaciones en lenguaje técnico y para personas sin conocimientos del tema.</p></div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t1-p2">No intentes usar IA para todo al mismo tiempo. Elige <strong>una tarea repetitiva</strong> que haces cada semana y prueba primero la IA con ella. Ejemplos: responder correos estándar, redactar propuestas, resumir reuniones.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 2 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🔍 Lo que la IA hace bien</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t2-p1">
+        La IA es excelente en tareas que implican <strong class="text-emerald-400">lenguaje y patrones</strong>. Puede leer, resumir, reescribir, traducir y generar texto con una velocidad y consistencia que ningún ser humano alcanza por sí solo. Pero entender en qué destaca evita que le pidas lo imposible.
+      </p>
+<!-- Grid de Comparacao -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ La IA lo hace bien</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Resumir documentos de 50 páginas en 1</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Generar borradores de correos electrónicos, propuestas y dictámenes</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Traducir textos técnicos manteniendo el tono</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Organizar información desestructurada en tablas</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mantener la coherencia en documentos largos</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ La IA lo hace mal</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Garantizar que la información sea verdadera</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tomar decisiones éticas o de criterio</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Entender los matices emocionales de un cliente</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Acceder a información en tiempo real (sin herramienta adicional)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sustituir la relación de confianza profesional-cliente</span></li>
+</ul>
+</div>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t2-p2">
+        Piensa en la IA como un <strong class="text-emerald-400">pasante muy rápido y muy obediente</strong>, pero que no tiene sentido común. Hace exactamente lo que le pides, a la velocidad que necesitas. Pero tienes que revisar su trabajo, porque no sabe cuándo se equivoca.
+      </p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">10x</div><div class="text-xs text-neutral-400">más rápida para resumir</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">24/7</div><div class="text-xs text-neutral-400">disponible en todo momento</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">0</div><div class="text-xs text-neutral-400">criterio propio</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">100%</div><div class="text-xs text-neutral-400">dependiente de la instrucción</div></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 3 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">⚠️ Lo que la IA no sustituye</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t3-p1">
+        Tus <strong class="text-emerald-400">años de experiencia</strong> no pueden ser replicados por un algoritmo. La IA no tiene experiencia vivida, no entiende el contexto emocional ni asume responsabilidades. Es una herramienta poderosa, pero el profesional que la utiliza es quien marca la diferencia.
+      </p>
+<!-- Timeline -->
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Criterio profesional</h4>
+<p class="text-sm text-neutral-400 mb-2">Irremplazable</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-1-t3-p2">La IA puede listar opciones, pero decidir qué camino seguir requiere el criterio que se desarrolla con años de práctica. Un abogado sabe cuándo un acuerdo es mejor que un juicio. Un médico percibe lo que el examen no muestra.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Ética y responsabilidad</h4>
+<p class="text-sm text-neutral-400 mb-2">Exclusivamente humana</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-1-t3-p3">La IA no tiene un código de ética. Tú respondes por el trabajo. Si la IA sugiere algo poco ético, tienes que reconocerlo y rechazarlo. La responsabilidad profesional no se delega a una máquina.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Empatía y relación humana</h4>
+<p class="text-sm text-neutral-400 mb-2">La ventaja competitiva</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-1-t3-p4">Un cliente te busca porque confía en ti, no en un algoritmo. La IA puede ayudar a preparar la conversación, pero la conexión humana es lo que fideliza y genera recomendaciones.</p>
+</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atención</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t3-p5">Nunca uses la IA como única fuente para tomar decisiones que afecten a tus clientes. <strong>Siempre revisa.</strong> La IA puede alucinar (inventar información convincente) y tú eres el único responsable del resultado final.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 4 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📊 Datos que lo comprueban</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t4-p1">
+        No es solo una opinión. Investigaciones recientes muestran que los profesionales que adoptaron la IA logran mejoras medibles en productividad y calidad. Las cifras son consistentes en distintas áreas y países.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Investigaciones y cifras</h3>
+<ul class="space-y-3 text-neutral-300">
+<li><strong>37%</strong> de reducción del tiempo de redacción de documentos profesionales (McKinsey, 2024)</li>
+<li><strong>25%</strong> más tareas completadas por día en oficinas que adoptaron IA (Harvard Business School)</li>
+<li><strong>40%</strong> de mejora en la calidad de los primeros borradores (MIT Sloan, estudio con consultores)</li>
+<li><strong>2-3 horas</strong> ahorradas por semana en promedio entre profesionales independientes (investigación de Salesforce 2025)</li>
+</ul>
+</div>
+<!-- Grid Comparacao -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Profesional CON IA</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Borrador de propuesta en 15 minutos</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Revisión de un contrato de 40 páginas en 20 minutos</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>5 versiones de correo electrónico para elegir la mejor</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Investigación de referencias en 5 minutos</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Profesional SIN IA</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Borrador de propuesta en 2 horas</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Revisión de un contrato de 40 páginas en 3 horas</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>1 versión de correo electrónico, reescrita manualmente si no te gusta</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Investigación de referencias en 45 minutos</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Perspectiva</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t4-p2">Si cobras R$300/hora y ahorras 3 horas por semana, son <strong>R$3.600/mes más de capacidad productiva</strong>. Esto paga cualquier suscripción de IA y todavía te sobra. La inversión se recupera en la primera semana.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 5 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">💡 Tu primera prueba</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t5-p1">
+        Basta de teoría. Hagamos una prueba práctica ahora. Abre el <strong class="text-emerald-400">ChatGPT</strong> (chat.openai.com) o el <strong class="text-emerald-400">Claude</strong> (claude.ai) en el navegador. No necesitas una cuenta paga; la versión gratuita sirve para esta prueba.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4">Copia y pega este prompt</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 mb-4 overflow-x-auto" data-inema-block="m1-1-t5-code1">
+<p>Eres un asistente de [TU PROFESIÓN].</p>
+<p class="mt-2">Necesito responder un correo electrónico de un cliente que está insatisfecho con el plazo de entrega de un dictamen. El cliente es educado, pero firme.</p>
+<p class="mt-2">Escribe una respuesta profesional que:</p>
+<p>- Reconoce la preocupación del cliente</p>
+<p>- Explica brevemente el motivo del retraso</p>
+<p>- Da un nuevo plazo realista</p>
+<p>- Mantén un tono cordial y profesional</p>
+<p class="mt-2">Máximo 150 palabras.</p>
+</div>
+<p class="text-sm text-neutral-400">Reemplaza [TU PROFESIÓN] por tu área. Ejecuta y mira el resultado. Después, prueba pedir ajustes: "más formal", "más corto", "incluye una disculpa".</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Qué observar en el resultado</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-primary">•</span><span>La IA produjo algo <strong>útil como punto de partida</strong>?</span></li>
+<li class="flex items-start space-x-2"><span class="text-primary">•</span><span>¿El tono fue adecuado para tu profesión?</span></li>
+<li class="flex items-start space-x-2"><span class="text-primary">•</span><span>¿Cuánto tiempo te llevaría escribir esto desde cero?</span></li>
+<li class="flex items-start space-x-2"><span class="text-primary">•</span><span>¿Qué cambiarías? (este es el siguiente paso: iterar)</span></li>
+</ul>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 6 -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🗺️ Mapa de oportunidades</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t6-p1">
+        Para usar la IA de forma estratégica, necesitas identificar dónde genera más valor en tu rutina. No vale la pena automatizar todas las tareas. El secreto es encontrar las que son <strong class="text-emerald-400">repetitivas, de gran volumen y que consumen un tiempo desproporcionado</strong>.
+      </p>
+<!-- Grid de conceitos-chave -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<div class="text-emerald-400 font-bold mb-2">🔥 Quick Wins (empieza aquí)</div>
+<p class="text-sm text-neutral-300" data-inema-block="m1-1-t6-p2">Correos electrónicos estándar, resúmenes de reuniones, propuestas comerciales, respuestas a clientes. Tareas que haces todas las semanas y que ya tienen un formato definido.</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<div class="text-emerald-400 font-bold mb-2">📈 Alto impacto (segundo paso)</div>
+<p class="text-sm text-neutral-300" data-inema-block="m1-1-t6-p3">Investigación de mercado, análisis de la competencia, contenido para redes sociales, preparación para reuniones importantes. Exigen más preparación, pero generan un retorno significativo.</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<div class="text-emerald-400 font-bold mb-2">⚠️ Úsala con cuidado</div>
+<p class="text-sm text-neutral-300" data-inema-block="m1-1-t6-p4">Documentos legales finales, diagnósticos, dictámenes definitivos. La IA ayuda con el borrador, pero la responsabilidad final es tuya. Revísalo siempre.</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<div class="text-emerald-400 font-bold mb-2">🚫 No delegues a la IA</div>
+<p class="text-sm text-neutral-300" data-inema-block="m1-1-t6-p5">Conversaciones difíciles con clientes, decisiones éticas, negociaciones delicadas, comentarios personales. Estas tareas requieren presencia y criterio humanos.</p>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">📝</span> Ejercicio: mapea tus tareas</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t6-p6">Enumera 5 tareas que haces cada semana. Para cada una, pregunta: "¿Esto implica leer, escribir, resumir u organizar texto?" Si sí, es probable que la IA ayude. Si implica tomar decisiones, relacionarse o manejar un contexto que solo tú tienes, la IA es un apoyo.</p>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 overflow-x-auto">
+<p>Mis 5 tareas semanales:</p>
+<p>1. _________________ [¿La IA ayuda? sí/parcialmente/no]</p>
+<p>2. _________________ [¿La IA ayuda? sí/parcialmente/no]</p>
+<p>3. _________________ [¿La IA ayuda? sí/parcial/no]</p>
+<p>4. _________________ [¿La IA ayuda? sí/parcial/no]</p>
+<p>5. _________________ [¿La IA ayuda? sí/parcialmente/no]</p>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✓</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">La IA ya es utilizada por profesionales independientes</strong><span class="text-neutral-400"> en todas las áreas, desde el derecho hasta la arquitectura</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Es excelente para texto, resúmenes y patrones</strong><span class="text-neutral-400"> pero no tiene criterio, ética ni empatía</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Los datos demuestran mejoras reales</strong><span class="text-neutral-400"> de 25-40% más productividad</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Empieza por una tarea sencilla</strong><span class="text-neutral-400"> y ve ampliando a medida que ganes confianza</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Mapea tus oportunidades</strong><span class="text-neutral-400"> para saber dónde la IA aporta más valor</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Siguiente módulo:</h3>
+<p class="text-neutral-300">1.2 - Cómo piensa la IA - lo mínimo necesario</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Volver a la ruta</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="modulo-1-2.html">Siguiente módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Profesional independiente con experiencia en IA - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

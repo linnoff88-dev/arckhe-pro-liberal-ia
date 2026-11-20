@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Modulo 2.1: Criando seu assistente | Pro Liberal IA</title>
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/learn.css" rel="stylesheet"/>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "pro-liberal-ia",
+    "tracks": [
+      { "n": "1", "title": "Fundamentos da IA", "modules": [
+        { "id": "1-1", "title": "O que a IA pode fazer por voce", "topics": 6, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "Como a IA pensa", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" },
+        { "id": "1-3", "title": "Escolhendo sua ferramenta", "topics": 6, "href": "curso/trilha1/modulo-1-3.html" }
+      ]},
+      { "n": "2", "title": "Seu Assistente Profissional", "modules": [
+        { "id": "2-1", "title": "Criando seu assistente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Ensinando o contexto", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" },
+        { "id": "2-3", "title": "Fluxo de trabalho diario", "topics": 6, "href": "curso/trilha2/modulo-2-3.html" }
+      ]},
+      { "n": "3", "title": "Os 10 Prompts Essenciais", "modules": [
+        { "id": "3-1", "title": "Prompts de atendimento", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Prompts de producao", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" },
+        { "id": "3-3", "title": "Prompts de estrategia", "topics": 6, "href": "curso/trilha3/modulo-3-3.html" }
+      ]},
+      { "n": "4", "title": "Templates Profissionais", "modules": [
+        { "id": "4-1", "title": "Proposta comercial", "topics": 6, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Resposta para cliente", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" },
+        { "id": "4-3", "title": "Conteudo para autoridade", "topics": 6, "href": "curso/trilha4/modulo-4-3.html" }
+      ]},
+      { "n": "5", "title": "Rotina e Pratica", "modules": [
+        { "id": "5-1", "title": "Checklist de atendimento", "topics": 6, "href": "curso/trilha5/modulo-5-1.html" },
+        { "id": "5-2", "title": "Rotina semanal", "topics": 6, "href": "curso/trilha5/modulo-5-2.html" },
+        { "id": "5-3", "title": "Proximos passos", "topics": 6, "href": "curso/trilha5/modulo-5-3.html" }
+      ]}
+    ]
+  }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s} .wf-a:nth-child(5){animation-delay:1s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha2/modulo-2-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha2/modulo-2-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha2/modulo-2-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-2-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha2/modulo-2-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha2/modulo-2-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">🧠 Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">🤖 Assistente</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">⚡ Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">📄 Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">🔄 Rotina</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Breadcrumb -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Inicio</a><span>/</span>
+<a class="hover:text-blue-400" href="index.html">Trilha 2</a><span>/</span>
+<span class="text-blue-400">Modulo 2.1</span>
+</div>
+</nav>
+<!-- Header -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 2.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Criando seu assistente personalizado</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Monte um assistente de IA que entende sua profissao, seu publico e seu jeito de trabalhar. Saia deste modulo com um prompt de sistema pronto para usar.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Hands-on</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="2-1" data-inema-track="2" id="conteudo">
+<!-- TOPICO 1 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-1" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🎯 O que e um assistente de IA personalizado</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t1-p1">
+        Um <strong class="text-blue-400">assistente de IA personalizado</strong> e uma inteligencia artificial configurada com instrucoes especificas sobre quem voce e, o que voce faz e como voce trabalha. Em termos tecnicos, isso se chama <strong class="text-blue-400">prompt de sistema</strong> (system prompt): um bloco de instrucoes que a IA le antes de cada conversa e que define seu comportamento.
+      </p>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t1-p2">
+        A diferenca entre usar o ChatGPT "zerado" e um assistente personalizado e a mesma entre contratar um estagiario no primeiro dia e ter um colega que trabalha com voce ha 2 anos. O estagiario precisa de explicacao em tudo. O colega ja sabe seu jargao, seu publico e seu jeito.
+      </p>
+<!-- SVG: Generico vs Personalizado -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Comparacao entre assistente generico que da respostas vagas e personalizado que entende o contexto profissional" class="w-full h-auto" role="img" viewbox="0 0 900 200">
+<defs>
+<lineargradient id="m21-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m21-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m21-grid)" height="200" width="900"></rect>
+<!-- Generico -->
+<rect fill="#1a1a2e" height="140" opacity="0.7" rx="14" stroke="#9ca3af" stroke-width="2" width="370" x="40" y="30"></rect>
+<text fill="#9ca3af" font-family="Inter,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="225" y="60">Assistente Generico</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="225" y="90">"Posso ajudar com diversas tarefas..."</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="225" y="115">Respostas genericas</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="225" y="140">Tom padrao</text>
+<text fill="#ef4444" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="225" y="158">Precisa de explicacao toda vez</text>
+<!-- Personalizado -->
+<g filter="url(#m21-glow)">
+<rect fill="#0e1622" height="140" rx="14" stroke="url(#m21-grad)" stroke-width="2" width="370" x="490" y="30"></rect>
+</g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="675" y="60">Assistente Personalizado</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="675" y="90">"Dr. Silva, sobre o caso do paciente..."</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="675" y="115">Respostas com contexto profissional</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="675" y="140">Tom calibrado pra sua area</text>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="675" y="158">Ja sabe quem voce e</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Assistente personalizado FAZ</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Usa terminologia da sua area automaticamente</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mantem o tom que voce definiu (formal, tecnico, acessivel)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Segue regras eticas da sua profissao</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Produz no formato que voce precisa (laudo, parecer, e-mail)</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Assistente generico NAO faz</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Nao sabe sua especialidade nem seu publico</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Responde em tom generico que nao parece com voce</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ignora restricoes regulatorias da sua area</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Produz em formato padrao que voce precisa retrabalhar</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">70%</span><p class="text-xs text-neutral-400 mt-1">menos retrabalho</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">3x</span><p class="text-xs text-neutral-400 mt-1">mais rapido</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">Tom</span><p class="text-xs text-neutral-400 mt-1">consistente</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">1x</span><p class="text-xs text-neutral-400 mt-1">configura, usa sempre</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 2 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-2" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🏗️ Anatomia do prompt de sistema</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t2-p1">
+        O <strong class="text-blue-400">prompt de sistema</strong> (system prompt) e o texto de instrucoes que a IA le antes de cada conversa. Pense nele como o "manual de bordo" do seu assistente. Ele tem <strong class="text-blue-400">5 partes</strong> que, juntas, definem completamente como o assistente se comporta.
+      </p>
+<!-- SVG: 5 partes do prompt -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="As 5 partes do prompt de sistema: Identidade, Publico, Regras, Formato e Conhecimento, formando o assistente completo" class="w-full h-auto" role="img" viewbox="0 0 900 280">
+<defs>
+<lineargradient id="m21b-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21b-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m21b-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m21b-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+</defs>
+<rect fill="url(#m21b-grid)" height="280" width="900"></rect>
+<!-- 5 blocos -->
+<g font-family="Inter,sans-serif">
+<rect class="wf-a" fill="#0e1b26" height="60" rx="10" stroke="#38bdf8" stroke-width="2" width="150" x="30" y="30"></rect>
+<text fill="#bfe6ff" font-size="13" font-weight="600" text-anchor="middle" x="105" y="55">1. Identidade</text>
+<text fill="#6b93b0" font-size="10" text-anchor="middle" x="105" y="73">Quem voce e</text>
+<rect class="wf-a" fill="#0e1b26" height="60" rx="10" stroke="#38bdf8" stroke-width="2" width="150" x="200" y="30"></rect>
+<text fill="#bfe6ff" font-size="13" font-weight="600" text-anchor="middle" x="275" y="55">2. Publico</text>
+<text fill="#6b93b0" font-size="10" text-anchor="middle" x="275" y="73">Pra quem voce fala</text>
+<rect class="wf-a" fill="#0e1b26" height="60" rx="10" stroke="#38bdf8" stroke-width="2" width="150" x="370" y="30"></rect>
+<text fill="#bfe6ff" font-size="13" font-weight="600" text-anchor="middle" x="445" y="55">3. Regras</text>
+<text fill="#6b93b0" font-size="10" text-anchor="middle" x="445" y="73">O que pode e nao pode</text>
+<rect class="wf-a" fill="#0e1b26" height="60" rx="10" stroke="#38bdf8" stroke-width="2" width="150" x="540" y="30"></rect>
+<text fill="#bfe6ff" font-size="13" font-weight="600" text-anchor="middle" x="615" y="55">4. Formato</text>
+<text fill="#6b93b0" font-size="10" text-anchor="middle" x="615" y="73">Como responder</text>
+<rect class="wf-a" fill="#0e1b26" height="60" rx="10" stroke="#38bdf8" stroke-width="2" width="150" x="710" y="30"></rect>
+<text fill="#bfe6ff" font-size="13" font-weight="600" text-anchor="middle" x="785" y="55">5. Conhecimento</text>
+<text fill="#6b93b0" font-size="10" text-anchor="middle" x="785" y="73">Sua base de dados</text>
+</g>
+<!-- Setas convergindo -->
+<g fill="none" opacity="0.55" stroke="#60a5fa" stroke-width="2">
+<path d="M105,90 L105,150 L400,180" marker-end="url(#m21b-ah)"></path>
+<path d="M275,90 L275,150 L400,180" marker-end="url(#m21b-ah)"></path>
+<path d="M445,90 L445,180" marker-end="url(#m21b-ah)"></path>
+<path d="M615,90 L615,150 L490,180" marker-end="url(#m21b-ah)"></path>
+<path d="M785,90 L785,150 L490,180" marker-end="url(#m21b-ah)"></path>
+</g>
+<!-- Assistente resultado -->
+<g filter="url(#m21b-glow)">
+<rect fill="#0e1622" height="70" rx="14" stroke="url(#m21b-grad)" stroke-width="2.5" width="190" x="355" y="180"></rect>
+</g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="450" y="210">Seu Assistente</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="450" y="232">personalizado e pronto</text>
+</svg>
+</div>
+<!-- Timeline das 5 partes -->
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Identidade</h4>
+<p class="text-sm text-neutral-400 mb-2">Quem o assistente e e qual sua especialidade</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-1-t2-p2">Exemplo: "Voce e um assistente especializado em direito civel, com foco em contratos empresariais. Seu nome e JurisBot."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Publico-alvo</h4>
+<p class="text-sm text-neutral-400 mb-2">Para quem o assistente vai produzir conteudo</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-1-t2-p3">Exemplo: "Seus clientes sao empresarios de PMEs que nao tem formacao juridica. Use linguagem clara, evite latinismos desnecessarios."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Regras de comportamento</h4>
+<p class="text-sm text-neutral-400 mb-2">Limites eticos e operacionais</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-1-t2-p4">Exemplo: "Nunca faca diagnostico medico. Sempre indique que a opiniao deve ser validada pelo profissional. Nunca invente jurisprudencia."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Formato de resposta</h4>
+<p class="text-sm text-neutral-400 mb-2">Como estruturar as saidas</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-1-t2-p5">Exemplo: "Responda sempre em topicos. Use no maximo 3 paragrafos. Quando redigir pecas, use o modelo [CABECALHO &gt; FUNDAMENTACAO &gt; PEDIDO]."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">5</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Base de conhecimento</h4>
+<p class="text-sm text-neutral-400 mb-2">Documentos e referencias que o assistente deve usar</p>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-1-t2-p6">Exemplo: "Use como referencia o Codigo Civil (2002), as sumulas do STJ sobre contratos e os modelos de contrato em anexo."</p>
+</div>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 3 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-3" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">👩‍⚕️ Exemplo pratico: assistente para medico</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t3-p1">
+        Vamos montar um assistente completo para a <strong class="text-blue-400">Dra. Mariana Silva</strong>, clinica geral com foco em medicina preventiva. O prompt abaixo e real e funcional. Copie, adapte e cole no ChatGPT ou Claude.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Prompt de sistema completo</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap mb-4" data-inema-block="m2-1-t3-p2">Voce e o assistente da Dra. Mariana Silva, medica clinica geral com 15 anos de experiencia em medicina preventiva.
+
+PUBLICO: Pacientes adultos de 30-60 anos, classe media, que buscam prevencao e qualidade de vida. Use linguagem clara e acolhedora, sem jargao medico desnecessario.
+
+REGRAS:
+- NUNCA faca diagnostico. Diga "consulte seu medico para confirmacao"
+- NUNCA recomende medicamentos especificos
+- Sempre sugira acompanhamento profissional para sintomas preocupantes
+- Use tom empatetico mas direto
+
+FORMATO:
+- Respostas em topicos quando possivel
+- Maximo 4 paragrafos por resposta
+- Inclua "Proximo passo sugerido:" no final
+
+CONHECIMENTO: Diretrizes do Ministerio da Saude 2024, protocolos de rastreamento INCA, tabela SUS de procedimentos preventivos.</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-4">
+<p class="text-primary font-semibold text-sm mb-1">💡 Copie e use</p>
+<p class="text-neutral-300 text-sm">Cole este prompt no campo "Custom Instructions" do ChatGPT ou no "System Prompt" do Claude. Depois teste com: "Paciente mulher, 45 anos, quer saber quais exames preventivos fazer este ano."</p>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">📊 Resultado: antes vs depois</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>Sem prompt:</strong> "Recomenda-se mamografia, papanicolau, hemograma..." (lista tecnica fria)</li>
+<li><strong>Com prompt:</strong> "Oi! Com 45 anos, o ideal e manter em dia 3 exames importantes para prevencao..." (tom acolhedor, linguagem do publico)</li>
+</ul>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 4 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-4" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">👩‍⚖️ Exemplo pratico: assistente para advogada</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t4-p1">
+        Agora vamos montar o assistente da <strong class="text-blue-400">Dra. Carla Mendes</strong>, advogada civel especializada em contratos e direito empresarial. Compare com o exemplo medico e note o que muda e o que permanece na estrutura.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Prompt de sistema completo</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap mb-4" data-inema-block="m2-1-t4-p2">Voce e o assistente juridico da Dra. Carla Mendes, advogada civel com 12 anos de experiencia em contratos empresariais e direito societario.
+
+PUBLICO: Empresarios de pequenas e medias empresas que precisam de orientacao juridica em linguagem acessivel. Evite latinismos, explique termos tecnicos.
+
+REGRAS:
+- NUNCA invente jurisprudencia ou artigos de lei
+- Sempre cite a fonte legal quando mencionar legislacao
+- Indique "Este e um rascunho — valide com sua advogada antes de usar" em qualquer peca
+- Respeite sigilo profissional: nao compartilhe dados entre clientes
+- Siga as normas da OAB sobre publicidade
+
+FORMATO:
+- Pecas: CABECALHO &gt; FATOS &gt; FUNDAMENTACAO &gt; PEDIDO
+- E-mails: formal mas acessivel, maximo 3 paragrafos
+- Pareceres: SITUACAO &gt; ANALISE &gt; CONCLUSAO &gt; RECOMENDACAO
+
+CONHECIMENTO: Codigo Civil (2002), CDC, Lei das S.A., CLT (clausulas trabalhistas em contratos), sumulas STJ mais citadas em direito contratual.</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ O que e UNIVERSAL (toda profissao)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Bloco de identidade com nome e especialidade</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Definicao clara do publico-alvo</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Regras negativas ("nunca faca X")</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Formato de saida estruturado</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-4">✎ O que MUDA (especifico da area)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400">✎</span><span>Terminologia tecnica (medica vs juridica)</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">✎</span><span>Restricoes eticas (diagnostico vs jurisprudencia)</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">✎</span><span>Modelos de documento (laudo vs peticao)</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">✎</span><span>Base de conhecimento (protocolos vs legislacao)</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3">💡 Dica: teste cruzado</h3>
+<p class="text-neutral-300">Depois de montar seu prompt, faca a mesma pergunta para o assistente generico e para o personalizado. A diferenca e o melhor argumento de que valeu o esforco. Prompt de teste: "Um cliente quer rescindir um contrato de prestacao de servicos. O que devo verificar antes de orientar?"</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 5 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-5" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧪 Monte o seu agora</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t5-p1">
+        Aqui esta o <strong class="text-blue-400">template universal</strong>. Funciona para qualquer profissao liberal. Copie, preencha os campos entre colchetes e cole na sua ferramenta de IA.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Template universal do prompt de sistema</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m2-1-t5-p2">Voce e o assistente de [SEU NOME], [SUA PROFISSAO] com [X] anos de experiencia em [SUA ESPECIALIDADE].
+
+PUBLICO: [DESCREVA SEUS CLIENTES/PACIENTES - idade, perfil, nivel de conhecimento tecnico]. Use linguagem [FORMAL/ACESSIVEL/TECNICA], [INSTRUCOES DE TOM].
+
+REGRAS:
+- NUNCA [RESTRICAO ETICA 1 - ex: diagnostique, invente dados]
+- NUNCA [RESTRICAO ETICA 2]
+- Sempre [REGRA POSITIVA 1 - ex: cite fontes, sugira validacao]
+- Sempre [REGRA POSITIVA 2]
+
+FORMATO:
+- [TIPO DE DOCUMENTO 1]: [ESTRUTURA - ex: CABECALHO &gt; CORPO &gt; CONCLUSAO]
+- [TIPO DE DOCUMENTO 2]: [ESTRUTURA]
+- Respostas gerais: [REGRA DE FORMATACAO - ex: maximo 3 paragrafos, use topicos]
+
+CONHECIMENTO: [SUAS REFERENCIAS - normas, leis, protocolos, guias que o assistente deve seguir].</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3">🎯 Objetivo</h3>
+<p class="text-neutral-300 mb-3">Preencha o template acima com suas informacoes e cole no ChatGPT (Custom Instructions) ou Claude (System Prompt).</p>
+<p class="text-neutral-300 text-sm"><strong>Como verificar:</strong> Depois de colar, faca uma pergunta tipica do seu dia a dia. Se a resposta ja vier no tom e formato que voce espera, esta funcionando. Se nao, revise o bloco de REGRAS e FORMATO.</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Onde colar o prompt (por ferramenta)</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">1</span></div>
+<div><h4 class="font-semibold text-white">ChatGPT</h4><p class="text-sm text-neutral-400">Settings &gt; Personalization &gt; Custom Instructions &gt; "How would you like ChatGPT to respond?"</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">2</span></div>
+<div><h4 class="font-semibold text-white">Claude</h4><p class="text-sm text-neutral-400">Projects &gt; Novo Projeto &gt; Instructions (campo no topo) ou cole no inicio da conversa</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">3</span></div>
+<div><h4 class="font-semibold text-white">Gemini</h4><p class="text-sm text-neutral-400">Google AI Studio &gt; System Instruction (campo no topo do chat)</p></div>
+</div>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 6 -->
+<section class="mb-16" data-inema-topic="modulo-2-1#topico-6" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">✅ Teste e refine</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t6-p1">
+        Seu assistente nao vai ficar perfeito de primeira. O segredo e <strong class="text-blue-400">testar com perguntas reais</strong> e ir ajustando o prompt de sistema. Aqui esta um checklist de 5 testes que revelam se o assistente esta calibrado.
+      </p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Checklist de 5 testes</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-3"><span class="text-blue-400 font-bold">1.</span><div><strong class="text-white">Teste de tom:</strong><span class="text-neutral-300"> Peca uma resposta a um cliente. O tom parece com voce?</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 font-bold">2.</span><div><strong class="text-white">Teste de jargao:</strong><span class="text-neutral-300"> Peca um documento tecnico. Ele usa os termos da sua area corretamente?</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 font-bold">3.</span><div><strong class="text-white">Teste de limite:</strong><span class="text-neutral-300"> Peca algo que voce proibiu (ex: diagnostico). Ele recusa?</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 font-bold">4.</span><div><strong class="text-white">Teste de formato:</strong><span class="text-neutral-300"> Peca um documento. Ele segue a estrutura que voce definiu?</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 font-bold">5.</span><div><strong class="text-white">Teste de publico:</strong><span class="text-neutral-300"> Peca uma explicacao. A linguagem e adequada para seu publico?</span></div></div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4">Prompt para testar (copie e use)</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap" data-inema-block="m2-1-t6-p2">Vou fazer 5 testes rapidos para calibrar voce. Responda cada um:
+
+1. Um cliente/paciente pergunta sobre [SITUACAO COMUM DA SUA AREA]. Responda como voce faria.
+2. Redija um [DOCUMENTO TIPICO DA SUA AREA] sobre [TEMA SIMPLES].
+3. [PERGUNTA QUE DEVERIA SER RECUSADA - ex: "Qual remedio devo tomar?"]
+4. Resuma o caso a seguir em 3 topicos: [DESCREVA UM CASO REAL SIMPLIFICADO]
+5. Explique [CONCEITO TECNICO DA SUA AREA] para um leigo.</div>
+<p class="text-sm text-neutral-400 mt-3"><strong>Como verificar:</strong> Se 4 de 5 respostas estao no tom e formato esperado, seu prompt esta bom. Se menos de 3, revise os blocos de REGRAS e FORMATO.</p>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3">⚠️ Erros comuns no primeiro prompt</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Prompt muito vago: "Seja um bom assistente" (nao funciona)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Prompt muito longo: mais de 500 palavras dilui a atencao da IA</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sem regras negativas: a IA precisa saber o que NAO fazer</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sem formato definido: a IA escolhe um formato diferente a cada resposta</span></li>
+</ul>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Assistente personalizado vs generico</strong><span class="text-neutral-400"> - a diferenca entre retrabalho constante e produtividade real</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">5 partes do prompt de sistema</strong><span class="text-neutral-400"> - Identidade, Publico, Regras, Formato, Conhecimento</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Exemplos reais</strong><span class="text-neutral-400"> - medico e advogada com prompts funcionais</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Template universal</strong><span class="text-neutral-400"> - copie, preencha e use em qualquer ferramenta</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Checklist de testes</strong><span class="text-neutral-400"> - 5 perguntas para validar se esta funcionando</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Proximo Modulo:</h3>
+<p class="text-neutral-300">2.2 - Ensinando o contexto da sua profissao</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Voltar para Trilha</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="modulo-2-2.html">Proximo Modulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Profissional Liberal Experiente com IA - 2026</p>
+</div>
+</footer>
+<script>
+    function toggleTopic(button) { const t=button.closest('.topic-item'); const e=t.querySelector('.topic-explanation'); const m=button.closest('.bg-dark-800'); m.querySelectorAll('.topic-explanation.active').forEach(x=>{if(x!==e)x.classList.remove('active');}); e.classList.toggle('active'); }
+    function openModal(id){const m=document.getElementById(id);if(m){m.classList.remove('hidden');document.body.style.overflow='hidden';}}
+    function closeModal(){document.querySelectorAll('.modal').forEach(m=>m.classList.add('hidden'));document.body.style.overflow='auto';}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    const themeToggle=document.getElementById('theme-toggle'),themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),html=document.documentElement;
+    if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!html.classList.contains('dark'))){themeToggleDarkIcon.classList.remove('hidden');html.classList.remove('dark');}else{themeToggleLightIcon.classList.remove('hidden');}
+    themeToggle.addEventListener('click',()=>{themeToggleDarkIcon.classList.toggle('hidden');themeToggleLightIcon.classList.toggle('hidden');html.classList.toggle('dark');localStorage.setItem('theme',html.classList.contains('dark')?'dark':'light');});
+  </script>
+<script src="../../assets/learn.js"></script>
+<script>if(window.INEMA&&typeof window.INEMA.init==="function"){window.INEMA.init();}</script>
+</body>
+</html>

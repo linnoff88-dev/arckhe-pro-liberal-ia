@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Module 1.3: Choosing Your Tool | Pro Liberal IA</title>
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "pro-liberal-ia",
+    "tracks": [
+      { "n": "1", "title": "Fundamentos da IA", "modules": [
+        { "id": "1-1", "title": "O que a IA pode fazer por voce", "topics": 6, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "Como a IA pensa", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" },
+        { "id": "1-3", "title": "Escolhendo sua ferramenta", "topics": 6, "href": "curso/trilha1/modulo-1-3.html" }
+      ]},
+      { "n": "2", "title": "Seu Assistente Profissional", "modules": [
+        { "id": "2-1", "title": "Criando seu assistente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Ensinando o contexto", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" },
+        { "id": "2-3", "title": "Fluxo de trabalho diario", "topics": 6, "href": "curso/trilha2/modulo-2-3.html" }
+      ]},
+      { "n": "3", "title": "Os 10 Prompts Essenciais", "modules": [
+        { "id": "3-1", "title": "Prompts de atendimento", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Prompts de producao", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" },
+        { "id": "3-3", "title": "Prompts de estrategia", "topics": 6, "href": "curso/trilha3/modulo-3-3.html" }
+      ]},
+      { "n": "4", "title": "Templates Profissionais", "modules": [
+        { "id": "4-1", "title": "Proposta comercial", "topics": 6, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Resposta para cliente", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" },
+        { "id": "4-3", "title": "Conteudo para autoridade", "topics": 6, "href": "curso/trilha4/modulo-4-3.html" }
+      ]},
+      { "n": "5", "title": "Rotina e Pratica", "modules": [
+        { "id": "5-1", "title": "Checklist de atendimento", "topics": 6, "href": "curso/trilha5/modulo-5-1.html" },
+        { "id": "5-2", "title": "Rotina semanal", "topics": 6, "href": "curso/trilha5/modulo-5-2.html" },
+        { "id": "5-3", "title": "Proximos passos", "topics": 6, "href": "curso/trilha5/modulo-5-3.html" }
+      ]}
+    ]
+  }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha1/modulo-1-3.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha1/modulo-1-3.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha1/modulo-1-3.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-3.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-1-3.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha1/modulo-1-3.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span><span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistant</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Routine</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Start</a><span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Track 1</a><span>/</span>
+<span class="text-emerald-400">Module 1.3</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="1">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MODULE 1.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🔮 Choosing your tool — ChatGPT, Claude, Gemini</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Practical comparison of the 3 leading AIs on the market. Which one is right for what, and where to start.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">30</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Basic</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Practical</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 1.3 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:1-3" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2"><span data-inema-meter-frac="">0 of 6</span><span data-inema-meter-pct="">0%</span></div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden"><div class="inema-bar__fill h-full bg-emerald-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="1-3" data-inema-track="1" id="conteudo">
+<!-- TOPICO 1: ChatGPT -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🏠 ChatGPT — the most popular</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t1-p1">
+        O <strong class="text-emerald-400">ChatGPT</strong>, from OpenAI, is the most widely used AI in the world. It was the first to become popular and has the largest user community. That means more tutorials, more examples, and a better chance that a colleague of yours already uses it. Access it at <strong>chat.openai.com</strong>.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🏠</span> ChatGPT's strengths</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Simple interface:</strong> just type and it responds. No setup required</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Custom GPTs:</strong> you can create an "assistant" with permanent instructions (paid version)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Plugins and browsing:</strong> accesses the internet, generates charts, reads PDFs</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Mobile app:</strong> available for iOS and Android, with voice recognition</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Communities:</strong> millions of users, so tips and ready-made prompts are easy to find</span></li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4">Quick test in ChatGPT</h3>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 overflow-x-auto" data-inema-block="m1-3-t1-code1">
+<p>You are an experienced [lawyer/doctor/accountant/architect].</p>
+<p>Summarize the main care instructions a client should follow in 5 bullet points</p>
+<p>should have when [hiring a service / getting a test / filing your taxes].</p>
+<p>Use accessible language and avoid jargon.</p>
+</div>
+<p class="text-sm text-neutral-400 mt-3">Paste this prompt into free ChatGPT and see the result in 15 seconds.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Ideal for</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t1-p2">Professionals who want <strong>get started quickly</strong>, who value a mobile app and need a general-purpose tool that does everything reasonably well.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- TOPICO 2: Claude -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🎯 Claude — precision and long context</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t2-p1">
+        O <strong class="text-emerald-400">Claude</strong>, from Anthropic, stands out in three critical areas for independent professionals: long texts, document analysis, and accuracy. It can process documents of up to 200,000 tokens (equivalent to an entire book) at once. Access it at <strong>claude.ai</strong>.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Claude's strengths</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Huge context window:</strong> reads entire long documents without losing information</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Projects:</strong> you upload reference documents, and it consults them throughout the conversation</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Lowest hallucination rate:</strong> tends to be more cautious and say "I don't know" when it doesn't know</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Detailed analysis:</strong> excellent for reviewing contracts, legal opinions, and technical documents</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Natural writing:</strong> produces less robotic text that feels more human</span></li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4">Real-world use case: Claude Projects</h3>
+<p class="text-neutral-300 text-sm mb-3" data-inema-block="m1-3-t2-p3">The function <strong class="text-emerald-400">Projects</strong> lets you upload reference documents (e.g., your professional code of ethics, contract templates, internal regulations). Claude consults these documents in <strong>every conversation</strong> within the project, without you needing to paste it again.</p>
+<div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300 overflow-x-auto" data-inema-block="m1-3-t2-code1">
+<p>1. Create a Project called "My Office"</p>
+<p>2. Upload your 3 most-used documents (contract template, fee schedule, client FAQ)</p>
+<p>3. Ask: "Based on the project documents, draft a response to a client who questions the fee amount."</p>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Ideal for</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t2-p2">Lawyers, accountants, and professionals who work with <strong>long, complex documents</strong>. If you need to analyze contracts, legal opinions, or regulations often, Claude is the natural choice.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- TOPICO 3: Gemini -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🔮 Gemini — Google and multimodal</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t3-p1">
+        O <strong class="text-emerald-400">Gemini</strong>, from Google, has a unique advantage: <strong class="text-emerald-400">native integration with the Google ecosystem</strong>. If you use Gmail, Google Docs, Drive, and Calendar in your office, Gemini works within those tools. Access it at <strong>gemini.google.com</strong>.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔮</span> Gemini's strengths</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Google integration:</strong> works inside Gmail, Docs, Sheets, and Slides</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Multimodal:</strong> understands text, images, and video in the same conversation</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Real-time research:</strong> accesses up-to-date information from the internet</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Generous free tier:</strong> Gemini 1.5 Flash is free and quite capable</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span><strong>Google Workspace AI:</strong> summarizes emails, generates presentations, analyzes spreadsheets</span></li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Ideal for</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t3-p2">Professionals who already live in <strong>Google ecosystem</strong> (Gmail + Docs + Drive) and want AI integrated into their existing workflow without having to open another tool.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- TOPICO 4: Comparacao -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📊 Side-by-side comparison</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t4-p1">
+        Here is a direct comparison based on the criteria that matter most to independent professionals. No tool is best at everything. Each has its strengths.
+      </p>
+<!-- SVG Comparativo -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Visual comparison of ChatGPT, Claude, and Gemini across 4 criteria: writing, documents, integrations, price" class="w-full h-auto" role="img" viewbox="0 0 800 260">
+<defs>
+<lineargradient id="m13-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m13-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m13-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#34d399" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m13-grid)" height="260" width="800" x="0" y="0"></rect>
+<!-- Headers -->
+<text fill="#e5e7eb" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="120" y="30">CRITERION</text>
+<rect fill="#0e2018" height="28" rx="8" stroke="#34d399" stroke-width="1.5" width="140" x="230" y="12"></rect>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="300" y="30">ChatGPT</text>
+<rect fill="#0e1b26" height="28" rx="8" stroke="#38bdf8" stroke-width="1.5" width="140" x="400" y="12"></rect>
+<text fill="#38bdf8" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="470" y="30">Claude</text>
+<rect fill="#1a1230" height="28" rx="8" stroke="#c084fc" stroke-width="1.5" width="140" x="570" y="12"></rect>
+<text fill="#c084fc" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="640" y="30">Gemini</text>
+<!-- Rows -->
+<g font-family="Inter,sans-serif" font-size="12">
+<!-- Texto -->
+<text fill="#e5e7eb" font-weight="600" text-anchor="middle" x="120" y="75">Text generation</text>
+<text fill="#6ee7b7" text-anchor="middle" x="300" y="75">Very good</text>
+<text fill="#93c5fd" text-anchor="middle" x="470" y="75">Excellent</text>
+<text fill="#d8b4fe" text-anchor="middle" x="640" y="75">Good</text>
+<line opacity="0.4" stroke="#374151" stroke-width="1" x1="40" x2="760" y1="90" y2="90"></line>
+<!-- Docs -->
+<text fill="#e5e7eb" font-weight="600" text-anchor="middle" x="120" y="120">Long documents</text>
+<text fill="#6ee7b7" text-anchor="middle" x="300" y="120">Good</text>
+<text fill="#93c5fd" text-anchor="middle" x="470" y="120">Excellent</text>
+<text fill="#d8b4fe" text-anchor="middle" x="640" y="120">Very good</text>
+<line opacity="0.4" stroke="#374151" stroke-width="1" x1="40" x2="760" y1="135" y2="135"></line>
+<!-- Integracao -->
+<text fill="#e5e7eb" font-weight="600" text-anchor="middle" x="120" y="165">Integration</text>
+<text fill="#6ee7b7" text-anchor="middle" x="300" y="165">Plugins</text>
+<text fill="#93c5fd" text-anchor="middle" x="470" y="165">Projects</text>
+<text fill="#d8b4fe" text-anchor="middle" x="640" y="165">Native Google</text>
+<line opacity="0.4" stroke="#374151" stroke-width="1" x1="40" x2="760" y1="180" y2="180"></line>
+<!-- Preco -->
+<text fill="#e5e7eb" font-weight="600" text-anchor="middle" x="120" y="210">Paid plan</text>
+<text fill="#6ee7b7" text-anchor="middle" x="300" y="210">~R$100/month</text>
+<text fill="#93c5fd" text-anchor="middle" x="470" y="210">~R$100/month</text>
+<text fill="#d8b4fe" text-anchor="middle" x="640" y="210">~R$95/month</text>
+<line opacity="0.4" stroke="#374151" stroke-width="1" x1="40" x2="760" y1="225" y2="225"></line>
+<!-- Alucinacao -->
+<text fill="#e5e7eb" font-weight="600" text-anchor="middle" x="120" y="250">Hallucination</text>
+<text fill="#fbbf24" text-anchor="middle" x="300" y="250">Medium</text>
+<text fill="#34d399" text-anchor="middle" x="470" y="250">Low</text>
+<text fill="#fbbf24" text-anchor="middle" x="640" y="250">Medium</text>
+</g>
+</svg>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Quick summary</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t4-p2">
+<strong>ChatGPT</strong> and the Swiss Army knife (does everything reasonably well). <strong>Claude</strong> is the specialist in long documents and high-quality text. <strong>Gemini</strong> is the best choice if you already live in Google. Neither is bad. The question is which one fits your workflow better.
+        </p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- TOPICO 5: Gratuito vs pago -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">💰 Free vs. paid</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t5-p1">
+        All three tools have a free version. The question is: <strong class="text-emerald-400">is it worth paying R$100/month for a premium plan?</strong> For an independent professional, almost always. The return pays for itself in the first few hours of use.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<h4 class="font-bold text-neutral-300 mb-4">Free plan</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Enough to test and learn</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Simple, quick tasks</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Hourly message limits</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Older/slower model</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Data may be used for training</span></li>
+</ul>
+</div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">Paid plan (~R$100/month)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Smarter and faster model</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>More messages per hour</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Data NOT used for training</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Advanced features (Projects, GPTs, plugins)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Priority access (no queue)</span></li>
+</ul>
+</div>
+</div>
+<!-- Calculo de ROI -->
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📊</span> Quick ROI calculator</h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">3h</div><div class="text-xs text-neutral-400">savings/week</div></div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">12h</div><div class="text-xs text-neutral-400">savings/month</div></div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">R$300</div><div class="text-xs text-neutral-400">hourly rate (e.g.)</div></div>
+<div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600 text-center"><div class="text-2xl font-bold text-emerald-400">R$3.600</div><div class="text-xs text-neutral-400">savings/month</div></div>
+</div>
+<p class="text-sm text-neutral-400 mt-4" data-inema-block="m1-3-t5-p2">Investment: ~R$100/month. Return: ~R$3,600/month in recovered time. ROI of <strong class="text-emerald-400">36x</strong>. Even if the actual savings are half that, it’s still one of the best investments in your office.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- TOPICO 6: Recomendacao -->
+<section class="mb-16" data-inema-topic="modulo-1-3#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">✔️ My recommendation</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-3-t6-p1">
+        There isn't just one right answer. But there is a <strong class="text-emerald-400">smart way to get started</strong>. Here's the path I recommend for independent professionals who are just getting started.
+      </p>
+<!-- Timeline de recomendacao -->
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Week 1–2: Start with free ChatGPT</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-3-t6-p2">It’s the most intuitive and has the most support materials. Use it for simple tasks: emails, summaries, drafts. Get a feel for what it’s like to talk with AI. Don’t worry about writing perfect prompts.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Week 3–4: Test Claude with a real document</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-3-t6-p3">Take a long document (contract, opinion, regulation) and ask Claude to analyze it. Compare it with ChatGPT. See which result you prefer for your type of work.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Month 2: Subscribe to the paid plan of whichever works best</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m1-3-t6-p4">After testing both, subscribe to the one that gave the best results for YOUR tasks. Don’t subscribe to both. One well-used tool is worth more than three underused ones.</p>
+</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Common pitfall</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t6-p5">Don't compare endlessly. Professionals who spend weeks choosing the perfect tool lose weeks of productivity. <strong>The best tool is the one you actually use.</strong> Start with any one and refine it later.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Next steps</h3>
+<p class="text-neutral-300" data-inema-block="m1-3-t6-p6">In Track 2, you'll learn to <strong>set up your custom assistant</strong> in the tool you chose. It will teach the AI about your profession and create a daily workflow with AI.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button"><span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span></button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✓</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">ChatGPT is the most popular and versatile</strong><span class="text-neutral-400"> with a mobile app and a large community</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Claude is best for long documents</strong><span class="text-neutral-400"> with a lower hallucination rate</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Gemini integrates with Google</strong><span class="text-neutral-400"> ideal for people who use Gmail/Docs/Drive</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">The paid plan pays for itself</strong><span class="text-neutral-400"> with an ROI of 10-36x for independent professionals</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Start with free ChatGPT</strong><span class="text-neutral-400"> try Claude in week 3, subscribe to the best one in month 2</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Next Track:</h3>
+<p class="text-neutral-300">Track 2: Your Professional Assistant — Setup and Customization</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-1-2.html">← Previous module</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="../trilha2/index.html">Track 2: Assistant →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Experienced Independent Professional with AI - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

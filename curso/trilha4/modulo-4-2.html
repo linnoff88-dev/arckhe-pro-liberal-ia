@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Modulo 4.2: Modelo de resposta para cliente | Pro Liberal IA</title>
+<!-- ANTI-FOUC -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha4/modulo-4-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha4/modulo-4-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha4/modulo-4-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-4-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha4/modulo-4-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha4/modulo-4-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistente</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10" href="index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Rotina</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-amber-400" href="../../index.html">Inicio</a><span>/</span>
+<a class="hover:text-amber-400" href="index.html">Trilha 4</a><span>/</span>
+<span class="text-amber-400">Modulo 4.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="4">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MODULO 4.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">💬 Modelo de resposta para cliente</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Templates de e-mail, WhatsApp e respostas para situacoes dificeis. Nunca mais trave na frente de uma mensagem complicada.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Template</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<div aria-label="Progresso do modulo 4.2" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:4-2" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 de 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-amber-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="4-2" data-inema-track="4" id="conteudo">
+<!-- SVG: impacto da resposta -->
+<div class="rounded-2xl border border-amber-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Duas situacoes: resposta rapida e profissional gera confianca; resposta lenta e generica gera desconfianca" class="w-full h-auto" role="img" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="m42-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fbbf24"></stop><stop offset="1" stop-color="#f59e0b"></stop></lineargradient>
+<filter height="180%" id="m42-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m42-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#f59e0b" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m42-grid)" height="200" width="800"></rect>
+<!-- Left: good response -->
+<g filter="url(#m42-glow)">
+<rect fill="#0e2018" height="140" rx="12" stroke="#34d399" stroke-width="2" width="360" x="20" y="30"></rect>
+</g>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="200" y="60">Resposta em 2h, personalizada</text>
+<text fill="#a7f3d0" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="200" y="85">Tom empatico + proximos passos claros</text>
+<rect fill="#0e2018" height="44" rx="10" stroke="#34d399" stroke-width="2" width="200" x="100" y="105"></rect>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="200" y="133">Cliente confia e indica</text>
+<!-- Right: bad response -->
+<rect fill="#2a0f16" height="140" opacity="0.85" rx="12" stroke="#f87171" stroke-width="2" width="360" x="420" y="30"></rect>
+<text fill="#f87171" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="600" y="60">Resposta em 3 dias, generica</text>
+<text fill="#fca5a5" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="600" y="85">Sem contexto + sem proximo passo</text>
+<rect fill="#2a0f16" height="44" rx="10" stroke="#f87171" stroke-width="2" width="200" x="500" y="105"></rect>
+<text fill="#f87171" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="600" y="133">Cliente procura outro</text>
+</svg>
+</div>
+<!-- Topico 1 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">💬 Por que a resposta certa muda tudo</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t1-p1">
+        A <strong class="text-amber-400">primeira resposta</strong> que um cliente recebe define sua percepcao de profissionalismo. Tempo de resposta, tom e clareza constroem (ou destroem) confianca antes da primeira reuniao. E o momento mais critico da relacao profissional.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Dados que importam</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">78%</span><span>dos clientes contratam o profissional que responde primeiro</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">5 min</span><span>e o tempo medio ideal de resposta no WhatsApp comercial</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">3x mais</span><span>indicacoes quando o cliente sente que foi bem atendido na comunicacao</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 font-bold">67%</span><span>dos clientes desistem se nao recebem resposta em 24 horas</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-3">✓ O que constroi confianca</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Resposta rapida (mesmo que parcial)</li>
+<li>Tom personalizado (nome do cliente, contexto)</li>
+<li>Proximo passo claro (o que acontece agora)</li>
+<li>Linguagem acessivel (sem jargao desnecessario)</li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-3">✗ O que destroi confianca</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Demora para responder (mais de 24h)</li>
+<li>Mensagem generica (copia-cola sem personalizar)</li>
+<li>Falta de proximo passo (cliente nao sabe o que fazer)</li>
+<li>Tom frio ou excessivamente formal</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Velocidade</span><p class="text-xs text-neutral-400 mt-1">Responda rapido</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Tom</span><p class="text-xs text-neutral-400 mt-1">Empatico e claro</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Proximo passo</span><p class="text-xs text-neutral-400 mt-1">Sempre direcione</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Confianca</span><p class="text-xs text-neutral-400 mt-1">Se constroi aqui</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 2 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📧 Template de e-mail profissional</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t2-p1">
+        Um e-mail profissional segue uma <strong class="text-amber-400">estrutura de 5 partes</strong>: assunto, saudacao, corpo, proximos passos e despedida. A IA gera em segundos o que levaria 15 minutos para redigir.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📧</span> Prompt: e-mail de primeiro contato</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-2-t2-prompt">Escreva um e-mail profissional de resposta a um potencial cliente:
+
+MEU NOME: [Seu nome]
+PROFISSAO: [sua area]
+CLIENTE: [Nome do cliente]
+ASSUNTO: [O que o cliente perguntou/pediu]
+CONTEXTO: [Como o cliente chegou ate voce - indicacao, site, etc.]
+
+ESTRUTURA:
+1. Assunto do e-mail (curto, especifico, sem "RE:")
+2. Saudacao com nome do cliente
+3. Agradecimento + referencia ao contexto
+4. Resposta objetiva a duvida/pedido
+5. Proximo passo concreto (agendar reuniao, enviar proposta)
+6. Despedida profissional + assinatura
+
+Tom: profissional, acolhedor, sem exageros.
+Tamanho: maximo 150 palavras no corpo.</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: assunto do e-mail</h3>
+<p class="text-neutral-300">O assunto e o que decide se o e-mail sera aberto. Use o <strong>nome do cliente + tema especifico</strong>. Exemplo: "Maria, proposta de assessoria tributaria" funciona melhor que "Proposta comercial". Assuntos vagos vao para a lixeira.</p>
+</div>
+<div class="bg-amber-900/20 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">⚡</span> Variacoes deste template</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Follow-up</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Envio de proposta</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Cobranca</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Agradecimento</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Encerramento</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Encaminhamento</span></div>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Assunto</span><p class="text-xs text-neutral-400 mt-1">Especifico + nome</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">150 palavras</span><p class="text-xs text-neutral-400 mt-1">Corpo conciso</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">CTA</span><p class="text-xs text-neutral-400 mt-1">Proximo passo</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Assinatura</span><p class="text-xs text-neutral-400 mt-1">Dados completos</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 3 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">📱 Template de WhatsApp</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t3-p1">
+        WhatsApp e o canal numero 1 de comunicacao profissional no Brasil. A diferenca entre uma mensagem que <strong class="text-amber-400">converte</strong> e uma que afasta esta na estrutura: curta, clara e com proximo passo.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📱</span> Prompt: resposta WhatsApp</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-2-t3-prompt">Escreva uma mensagem de WhatsApp profissional:
+
+CENARIO: [ex: cliente perguntou sobre honorarios]
+MEU NOME: [Seu nome]
+CLIENTE: [Nome do cliente]
+TOM: profissional mas proximo (sem emoji excessivo)
+
+REGRAS:
+- Maximo 4 linhas (WhatsApp corta mensagens longas)
+- Saudacao com nome do cliente
+- Resposta direta a pergunta
+- Proximo passo claro (link, horario, ligacao)
+- 1 emoji maximo, estrategico
+
+Gere 3 versoes: formal, equilibrada e informal.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ WhatsApp profissional</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Paragrafos de 1-2 linhas</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Nome do cliente na saudacao</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Proximo passo com horario</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>1 emoji maximo, bem posicionado</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Evitar no WhatsApp</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Texto corrido sem quebra de linha</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Excesso de emojis (parece amador)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Audio longo sem aviso previo</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Prezado(a)" ou linguagem de e-mail</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: 3 versoes</h3>
+<p class="text-neutral-300">Pedir 3 versoes (formal, equilibrada, informal) da a voce opcoes sem esforco extra. Escolha a que melhor combina com o perfil do cliente. Com o tempo, voce desenvolve um instinto para qual tom funciona com quem.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">4 linhas</span><p class="text-xs text-neutral-400 mt-1">Maximo por msg</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">1 emoji</span><p class="text-xs text-neutral-400 mt-1">Estrategico</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">3 versoes</span><p class="text-xs text-neutral-400 mt-1">Formal a informal</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">CTA</span><p class="text-xs text-neutral-400 mt-1">Sempre presente</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 4 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🔄 Respostas para situacoes dificeis</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t4-p1">
+        Reclamacao, atraso na entrega, reajuste de honorarios. Sao as mensagens mais <strong class="text-amber-400">dificeis de escrever</strong> e as que mais impactam a retencao. A IA encontra o tom certo quando voce nao consegue.
+      </p>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">A</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Reclamacao do cliente</h4>
+<p class="text-sm text-neutral-400 mb-3">Prompt para cenario de insatisfacao</p>
+<pre class="bg-dark-900 rounded-lg p-3 text-xs text-neutral-300 whitespace-pre-wrap" data-inema-block="m4-2-t4-a">O cliente [nome] reclamou sobre [problema].
+Escreva uma resposta que:
+(1) Valide o sentimento do cliente
+(2) Assuma responsabilidade sem justificativa excessiva
+(3) Apresente solucao concreta com prazo
+Tom: empatico, firme, profissional.
+Canal: [e-mail / WhatsApp]</pre>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">B</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Comunicar atraso</h4>
+<p class="text-sm text-neutral-400 mb-3">Prompt para comunicar prazo estourado</p>
+<pre class="bg-dark-900 rounded-lg p-3 text-xs text-neutral-300 whitespace-pre-wrap" data-inema-block="m4-2-t4-b">Preciso informar o cliente [nome] que a entrega de [servico] vai atrasar [X dias].
+Escreva uma mensagem que:
+(1) Comunique o atraso sem rodeios
+(2) Explique o motivo em 1 frase
+(3) Apresente novo prazo firme
+(4) Ofereca compensacao se cabivel
+Sem vitimismo. Canal: [e-mail / WhatsApp]</pre>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">C</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Reajuste de honorarios</h4>
+<p class="text-sm text-neutral-400 mb-3">Prompt para comunicar aumento de preco</p>
+<pre class="bg-dark-900 rounded-lg p-3 text-xs text-neutral-300 whitespace-pre-wrap" data-inema-block="m4-2-t4-c">Preciso comunicar ao cliente [nome] um reajuste de [X%] nos honorarios a partir de [data].
+Escreva uma mensagem que:
+(1) Valorize a parceria
+(2) Justifique com dados (inflacao, aumento de escopo)
+(3) Apresente o novo valor
+(4) Ofereca opcoes de pagamento
+Tom: firme e respeitoso. Canal: [e-mail / WhatsApp]</pre>
+</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Regra de ouro</h3>
+<p class="text-neutral-300">Em situacoes dificeis, <strong>empatia primeiro, fatos depois, solucao sempre</strong>. Nunca comece com justificativas. Comece reconhecendo o que o cliente sente. Depois explique. Depois resolva.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Empatia</span><p class="text-xs text-neutral-400 mt-1">Primeiro sempre</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Fatos</span><p class="text-xs text-neutral-400 mt-1">Sem rodeios</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Solucao</span><p class="text-xs text-neutral-400 mt-1">Concreta + prazo</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Registro</span><p class="text-xs text-neutral-400 mt-1">Tudo por escrito</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 5 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🤖 Prompt mestre de respostas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t5-p1">
+        Em vez de memorizar dezenas de templates, domine <strong class="text-amber-400">um unico prompt versatil</strong> que gera respostas adequadas para qualquer situacao de comunicacao profissional. Este e o prompt que vale por todos.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🤖</span> Prompt mestre: qualquer situacao</h3>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m4-2-t5-prompt">Voce e meu assistente de comunicacao profissional.
+Gere uma resposta para esta situacao:
+
+CANAL: [e-mail / WhatsApp / telefone (roteiro)]
+SITUACAO: [descreva o cenario em 2-3 linhas]
+CLIENTE: [nome, perfil: leigo / tecnico / empresario]
+TOM DESEJADO: [formal / equilibrado / informal]
+RESTRICOES: [ex: nao mencionar valores, nao prometer prazos]
+
+REGRAS:
+- Se e-mail: assunto + corpo em 150 palavras max
+- Se WhatsApp: 4 linhas max, 1 emoji
+- Se telefone: roteiro com pontos-chave para a ligacao
+- Inclua proximo passo concreto
+- Gere 2 versoes para eu escolher</pre>
+</div>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Por que um prompt so basta</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>O <strong>campo SITUACAO</strong> cobre qualquer cenario: desde boas-vindas ate cobranca</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>O <strong>campo TOM</strong> ajusta automaticamente a linguagem por contexto</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>As <strong>RESTRICOES</strong> evitam que a IA extrapole seus limites</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>2 versoes</strong> sempre: voce escolhe a melhor e ajusta com mais rapidez</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>3 canais</strong> num unico prompt: e-mail, WhatsApp e roteiro de ligacao</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">1 prompt</span><p class="text-xs text-neutral-400 mt-1">Todas as situacoes</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">3 canais</span><p class="text-xs text-neutral-400 mt-1">E-mail, WA, tel</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">2 versoes</span><p class="text-xs text-neutral-400 mt-1">Sempre gera par</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Restricoes</span><p class="text-xs text-neutral-400 mt-1">Controle total</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- Topico 6 -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">📁 Banco de respostas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m4-2-t6-p1">
+        Com o tempo, voce acumula respostas excelentes geradas pela IA. Organiza-las num <strong class="text-amber-400">banco de templates</strong> permite reutilizar, adaptar e compartilhar com a equipe. E a diferenca entre eficiencia individual e eficiencia sistematica.
+      </p>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Crie uma pasta "Templates"</h4>
+<p class="text-sm text-neutral-300">No Google Drive, Notion ou pasta do computador. Simples e acessivel. O importante e ter um unico lugar para tudo.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Categorize por tipo</h4>
+<p class="text-sm text-neutral-300">Primeiro contato, follow-up, reclamacao, reajuste, agradecimento, indicacao. Use nomes que voce entende de relance.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Salve as melhores</h4>
+<p class="text-sm text-neutral-300">Toda vez que uma resposta funcionar bem (cliente respondeu positivo, fechou contrato, resolveu conflito), salve com etiqueta de cenario e canal.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Revise mensalmente</h4>
+<p class="text-sm text-neutral-300">Descarte as que nao funcionam, refine as que funcionam, adicione novas. Em 3 meses voce tera um arsenal pronto para qualquer situacao.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: atalhos do WhatsApp</h3>
+<p class="text-neutral-300">O <strong>WhatsApp Business</strong> permite criar "respostas rapidas" acessiveis por atalho (ex.: /preco, /horario, /obrigado). Salve seus melhores templates la e envie em 2 toques. E a forma mais rapida de usar o banco de respostas no dia a dia.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Organizar</span><p class="text-xs text-neutral-400 mt-1">Por categoria</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Salvar</span><p class="text-xs text-neutral-400 mt-1">As que funcionam</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Revisar</span><p class="text-xs text-neutral-400 mt-1">Todo mes</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-amber-400 font-bold text-sm">Atalhos</span><p class="text-xs text-neutral-400 mt-1">WA Business</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Marcar como lido</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">💬</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Resposta rapida = confianca</strong><span class="text-neutral-400"> - velocidade e tom definem a percepcao</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Template de e-mail</strong><span class="text-neutral-400"> - 5 partes, 150 palavras, sempre com CTA</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Template de WhatsApp</strong><span class="text-neutral-400"> - 4 linhas, 1 emoji, proximo passo</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Situacoes dificeis</strong><span class="text-neutral-400"> - empatia, fatos e solucao concreta</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Prompt mestre</strong><span class="text-neutral-400"> - 1 prompt para todas as situacoes</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Banco de respostas</strong><span class="text-neutral-400"> - organize, salve, revise, reutilize</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-amber-400 mb-2">Proximo Modulo:</h3>
+<p class="text-neutral-300">4.3 - Modelo de conteudo para autoridade: posts, artigos, videos e calendario editorial.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-4-1.html">← Modulo Anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors" href="modulo-4-3.html">Proximo Modulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Profissional Liberal Experiente com IA - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script src="../../assets/learn.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

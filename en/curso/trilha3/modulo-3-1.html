@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Module 3.1: Client Service and Communication Prompts | Pro Liberal IA</title>
+<!-- ANTI-FOUC -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha3/modulo-3-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha3/modulo-3-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha3/modulo-3-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha3/modulo-3-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-3-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha3/modulo-3-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistant</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Routine</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-purple-400" href="../../index.html">Start</a><span>/</span>
+<a class="hover:text-purple-400" href="index.html">Track 3</a><span>/</span>
+<span class="text-purple-400">Module 3.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="3">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULE 3.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📞 Customer Service and Communication Prompts (#1-#4)</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Four ready-to-copy prompts: client meeting preparation, professional email, WhatsApp, and meeting minutes. Each one solves a specific everyday pain point.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">40</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Copy-run</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 3.1 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:3-1" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 of 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-purple-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="3-1" data-inema-track="3" id="conteudo">
+<!-- SVG: fluxo dos 4 prompts -->
+<div class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="4-prompt workflow: pre-service, email, WhatsApp, and meeting minutes connected by arrows" class="w-full h-auto" role="img" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="m31-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a855f7"></stop><stop offset="1" stop-color="#7c3aed"></stop></lineargradient>
+<filter height="180%" id="m31-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m31-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#a855f7" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m31-grid)" height="200" width="800"></rect>
+<!-- Prompt 1 -->
+<g filter="url(#m31-glow)">
+<rect fill="#1a0a2e" height="80" rx="12" stroke="url(#m31-grad)" stroke-width="2" width="160" x="20" y="60"></rect>
+</g>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="100" y="92">#1 Pre-appointment</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="100" y="118">Case briefing</text>
+<!-- Arrow 1-2 -->
+<path d="M180,100 L215,100" fill="none" opacity="0.6" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<polygon fill="#a855f7" opacity="0.6" points="215,95 225,100 215,105"></polygon>
+<!-- Prompt 2 -->
+<rect fill="#1a0a2e" height="80" opacity="0.85" rx="12" stroke="#a855f7" stroke-width="2" width="140" x="225" y="60"></rect>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="295" y="92">#2 Email</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="295" y="118">Formal follow-up</text>
+<!-- Arrow 2-3 -->
+<path d="M365,100 L400,100" fill="none" opacity="0.6" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<polygon fill="#a855f7" opacity="0.6" points="400,95 410,100 400,105"></polygon>
+<!-- Prompt 3 -->
+<rect fill="#1a0a2e" height="80" opacity="0.85" rx="12" stroke="#a855f7" stroke-width="2" width="140" x="410" y="60"></rect>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="480" y="92">#3 WhatsApp</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="480" y="118">Quick message</text>
+<!-- Arrow 3-4 -->
+<path d="M550,100 L585,100" fill="none" opacity="0.6" stroke="#a855f7" stroke-dasharray="5 4" stroke-width="1.8"></path>
+<polygon fill="#a855f7" opacity="0.6" points="585,95 595,100 585,105"></polygon>
+<!-- Prompt 4 -->
+<rect fill="#1a0a2e" height="80" rx="12" stroke="url(#m31-grad)" stroke-width="2" width="160" x="595" y="60"></rect>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="675" y="92">#4 Meeting minutes</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="675" y="118">Formal record</text>
+<!-- Labels -->
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="400" y="30">Complete service workflow</text>
+<text fill="#a855f7" font-family="Inter,sans-serif" font-size="11" opacity="0.7" text-anchor="middle" x="400" y="180">Before → During → After the appointment</text>
+</svg>
+</div>
+<!-- TOPICO 1: Prompt #1 -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">📞 Prompt #1: Pre-Appointment Preparation</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t1-p1">
+        This is the prompt you use <strong class="text-purple-400">before each consultation, meeting, or hearing</strong>. You paste in the case details and get a complete briefing in seconds: summary, outstanding items, key questions, and next steps. The result: you go into the appointment already knowing everything, without having to reread medical records or notes.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #1 - Pre-Appointment Preparation (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-1-t1-prompt">Preciso me preparar para um atendimento em [TEMPO: ex: 15 minutos].
+
+CLIENTE/PACIENTE: [nome completo]
+TIPO DE ATENDIMENTO: [consulta inicial / retorno / reuniao / audiencia]
+HISTORICO RESUMIDO: [cole anotacoes anteriores, dados do caso, historico relevante]
+OBJETIVO DESTE ENCONTRO: [o que preciso resolver, discutir ou decidir]
+
+Me entregue:
+1. RESUMO DO CASO (max 5 linhas): o essencial que preciso ter em mente
+2. PENDENCIAS ANTERIORES: o que ficou em aberto desde o ultimo contato
+3. 5 PERGUNTAS-CHAVE: as perguntas mais importantes para este encontro
+4. PONTOS DE ATENCAO: prazos proximos, riscos ou situacoes sensiveis
+5. PROXIMOS PASSOS PROVAVEIS: o que provavelmente vai sair deste encontro
+
+Formato: bullet points, direto ao ponto, sem introducoes.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-3">✓ With the prompt</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Briefing ready in 30 seconds</li>
+<li>Automatically identified pending items</li>
+<li>Key questions you wouldn't think of</li>
+<li>Go into the appointment with confidence</li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-3">✗ Without the prompt</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>15 minutes rereading the medical record/notes</li>
+<li>Forget previous pending items</li>
+<li>Improvises the questions on the spot</li>
+<li>Client notices lack of preparation</li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> When to use</h3>
+<p class="text-neutral-300" data-inema-block="m3-1-t1-tip">Use it for 5–10 minutes before any scheduled appointment. It works for doctors (before a consultation), attorneys (before a hearing), accountants (before a client meeting), and any professional who works with people. The more history you paste in, the better the brief.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">30s</span><p class="text-xs text-neutral-400 mt-1">To generate a briefing</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">5 questions</span><p class="text-xs text-neutral-400 mt-1">Suggested key</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Pending items</span><p class="text-xs text-neutral-400 mt-1">Self-identified</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Universal</span><p class="text-xs text-neutral-400 mt-1">Any profession</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 2: Prompt #2 -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📧 Prompt #2: Professional email</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t2-p1">
+        The email prompt is the one you use most in your day-to-day work. Describe what you want to communicate, set the tone, and get a ready-to-send email. It works for any type: <strong class="text-purple-400">client response, follow-up, proposal, invoice reminder, thank-you, referral</strong>. In 30 seconds, you have a text that would take 10 minutes to write from scratch.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #2 - Professional Email (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-1-t2-prompt">Redija um e-mail profissional com estas especificacoes:
+
+DESTINATARIO: [nome e relacao - ex: "Sra. Ana Costa, cliente desde 2024"]
+ASSUNTO: [tema do e-mail]
+TIPO: [resposta / follow-up / proposta / cobranca / agradecimento / encaminhamento]
+TOM: [formal / profissional-acessivel / urgente / empatetico]
+OBJETIVO: [o que quero comunicar ou pedir]
+DETALHES IMPORTANTES: [informacoes que devem constar no corpo]
+ACAO ESPERADA: [o que o destinatario deve fazer apos ler]
+
+Regras:
+- Maximo 150 palavras (a menos que eu peca mais)
+- Use meu estilo habitual de comunicacao
+- Inclua saudacao, corpo estruturado e despedida
+- Se houver prazo, destaque-o
+- Nao use cliches como "venho por meio desta"</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-3">✓ With the prompt</h4>
+<p class="text-sm text-neutral-300">30 seconds to fill out. An email ready in your tone. Review it in 1 minute and send. No getting stuck staring at a blank screen.</p>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-3">✗ Without the prompt</h4>
+<p class="text-sm text-neutral-300">10-15 minutes thinking about the best way to write it. Rewrites it 2-3 times. Puts it off until "later" and forgets.</p>
+</div>
+</div>
+<div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center"><span class="mr-2">⚡</span> Types of emails this prompt handles</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">First contact</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Follow-up</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Proposal/estimate</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Sensitive billing</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Thank you</span></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><span class="text-sm text-neutral-300">Next steps</span></div>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 3: Prompt #3 -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">💬 Prompt #3: WhatsApp message</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t3-p1">
+        WhatsApp is the channel clients use most in Brazil. Poorly written messages come across as unprofessional. Well-written messages convey <strong class="text-purple-400">attention and professionalism</strong>. This prompt generates short, direct messages in the right tone for confirmations, reminders, quick replies, and informal announcements.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #3 - Professional WhatsApp Message (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-1-t3-prompt">Escreva uma mensagem de WhatsApp profissional:
+
+PARA: [nome e contexto - ex: "Joao, paciente retorno amanha"]
+TIPO: [confirmacao / lembrete / resposta rapida / aviso / agradecimento]
+CONTEUDO: [o que preciso comunicar]
+TOM: [profissional-acessivel / formal-curto / empatetico]
+
+Regras:
+- Maximo 4 linhas (WhatsApp e leitura rapida)
+- Comece com saudacao curta (Oi/Ola + nome)
+- Termine com CTA claro (o que a pessoa deve fazer)
+- Use emoji com moderacao (maximo 2, se for o meu estilo)
+- Nao use "Prezado(a)" nem linguagem de e-mail
+- Nao inclua assinatura formal</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Professional WhatsApp</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Paragraphs of 1-2 lines</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Client’s name in the greeting</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Clear CTA (time, link, action)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tone suited to the channel</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ What to avoid on WhatsApp</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Continuous text without line breaks</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Too many emojis (looks unprofessional)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Long audio recording without prior notice</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Dear" or email language</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Tip: batch messages</h3>
+<p class="text-neutral-300" data-inema-block="m3-1-t3-tip">If you need to send similar messages to several clients (e.g., appointment reminders), list all the names and ask the assistant to generate all the messages at once. In 1 minute, you'll have 10 personalized messages ready to send.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">4 lines</span><p class="text-xs text-neutral-400 mt-1">Maximum per message</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">2 emojis</span><p class="text-xs text-neutral-400 mt-1">Maximum</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Batch</span><p class="text-xs text-neutral-400 mt-1">10 messages in 1 min</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">CTA</span><p class="text-xs text-neutral-400 mt-1">Always present</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 4: Prompt #4 -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📋 Prompt #4: Meeting Minutes</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t4-p1">
+        Well-written meeting minutes prevent misunderstandings and serve as a formal record. The problem is that nobody likes writing minutes. This prompt turns your <strong class="text-purple-400">rough notes</strong> (or even transcribed audio) into structured minutes with participants, agenda, decisions, next steps, and owners. From 30 minutes of manual work to 2 minutes.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-purple-400 text-sm">📋 PROMPT #4 - Meeting Minutes (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m3-1-t4-prompt">Turn these notes into professional meeting minutes:
+
+DATE: [meeting date]
+PARTICIPANTS: [list everyone]
+LOCATION/FORMAT: [in person / video conference / phone]
+RAW NOTES:
+[paste everything you wrote down during the meeting - it can be unstructured text, abbreviations, bullet points]
+
+Structure the minutes with:
+1. HEADER: date, time, location, participants
+2. AGENDA: topics discussed (in order)
+3. DECISIONS: what was decided about each topic
+4. ACTION ITEMS: next steps, with an owner and deadline
+5. NOTES: points mentioned but not decided
+
+Format: formal, clear, objective. Don’t make up information that isn’t in the notes. If anything is ambiguous, mark it with [CONFIRM].</pre>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Practical impact</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="text-center">
+<div class="text-2xl font-bold text-blue-400">30 min</div>
+<div class="text-xs text-neutral-400">Manual time for minutes</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-purple-400">2 min</div>
+<div class="text-xs text-neutral-400">Time with the prompt</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-emerald-400">93%</div>
+<div class="text-xs text-neutral-400">Time savings</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Tip: transcribed audio</h3>
+<p class="text-neutral-300" data-inema-block="m3-1-t4-tip">If you recorded the meeting (with consent), use an automatic transcription tool and paste the transcribed text in place of the "raw notes." AI will organize everything into professional meeting minutes, even from disorganized text.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 5: Adaptando -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🔧 Adapting prompts to your profession</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t5-p1">
+        The prompts above are <strong class="text-purple-400">universal templates</strong>. To get the most out of them, you need to adapt them to your field. Adaptation involves 3 changes: specific terminology, professional restrictions, and the format your audience expects.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-purple-400 mb-3">⚖️ For lawyers</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Add: "Use legal language when appropriate"</li>
+<li>Add: “Never make claims about case outcomes”</li>
+<li>Change the default tone to "formal-technical"</li>
+<li>Include a legal basis section in the minutes</li>
+<li>In the email: include the case number when applicable</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-purple-400 mb-3">⚕️ For doctors</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Add: “Never suggest a diagnosis or treatment”</li>
+<li>Add: “Always include: consult in person”</li>
+<li>Change "minutes" to "service progress"</li>
+<li>Use ICD codes and medical terminology in the brief</li>
+<li>On WhatsApp: avoid written clinical guidance</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-purple-400 mb-3">📈 For accountants</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Add: “Include relevant tax deadlines”</li>
+<li>Add: “Mention any outstanding ancillary obligations”</li>
+<li>In the briefing: highlight upcoming due dates</li>
+<li>In the minutes: tax liabilities section</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-purple-400 mb-3">🏫 For architects/engineers</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Add: "Reference technical standards (ABNT)"</li>
+<li>In the project brief: include the construction phase</li>
+<li>In the minutes: physical and financial progress section</li>
+<li>In the email: include a reference to the project/contract</li>
+</ul>
+</div>
+</div>
+<div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center"><span class="mr-2">⚡</span> How to adapt in 3 steps</h3>
+<ol class="space-y-2 text-neutral-300 list-decimal list-inside">
+<li><strong>Terminology:</strong> replace generic words with terms from your field</li>
+<li><strong>Restrictions:</strong> add ethical and legal rules for your profession</li>
+<li><strong>Format:</strong> adjust the output structure to what your audience expects</li>
+</ol>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 6: Exercicio -->
+<section class="mb-16" data-inema-topic="modulo-3-1#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🎯 Integrated exercise</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m3-1-t6-p1">
+        Time to practice. Choose one <strong class="text-purple-400">real case</strong> from your practice (an appointment scheduled for this week) and apply the 4 prompts in sequence. The full exercise takes 15 minutes and shows how the prompts connect in a real workflow.
+      </p>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Before the appointment (Prompt #1)</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m3-1-t6-s1">Use Prompt #1 to generate the pre-appointment brief. Paste in the case details and see the summary AI produces. Evaluate: Is the summary accurate? Are the suggested questions relevant?</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">After the appointment (Prompts #2, #3, and #4)</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m3-1-t6-s2">Use Prompt #4 to turn your notes into meeting minutes. Then use Prompt #2 to draft the follow-up email to the client. If needed, use Prompt #3 for the WhatsApp confirmation message.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold text-sm">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Evaluation and adjustment</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m3-1-t6-s3">Compare: how long would it take you to do all this manually? How long did it take with the prompts? Was the result good enough to use without major adjustments? If not, what adjustments do the prompts need?</p>
+</div>
+</div>
+</div>
+<div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center"><span class="mr-2">⚡</span> Exercise goal</h3>
+<p class="text-neutral-300" data-inema-block="m3-1-t6-meta">By the end, you should have: (1) an appointment briefing, (2) meeting minutes, (3) a follow-up email, and (4) a WhatsApp message. All generated in under 15 minutes. If you did it, you already know how to use the 4 appointment prompts.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Final tip</h3>
+<p class="text-neutral-300">Save the adapted prompts as "custom instructions" in your AI assistant (ChatGPT, Claude, Gemini). That way, next time you just need to describe the situation and the prompt will already be configured automatically. See how to do this in Module 2.2 (Teaching the context).</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">15 min</span><p class="text-xs text-neutral-400 mt-1">Complete exercise</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">4 prompts</span><p class="text-xs text-neutral-400 mt-1">In sequence</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Real case</span><p class="text-xs text-neutral-400 mt-1">From your practice</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600 text-center"><span class="text-purple-400 font-bold text-sm">Evaluate</span><p class="text-xs text-neutral-400 mt-1">Adjust and save</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📞</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #1: Pre-appointment</strong><span class="text-neutral-400"> - complete briefing in 30 seconds</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #2: Professional email</strong><span class="text-neutral-400"> - any type of email, ready to send</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #3: WhatsApp</strong><span class="text-neutral-400"> - 4 lines, right tone, clear CTA</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt #4: Meeting minutes</strong><span class="text-neutral-400"> - rough notes become a formal document</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Adaptation</strong><span class="text-neutral-400"> - 3 adjustments for any profession</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-purple-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">3.2 - Production prompts (#5-#7): technical document, opinion/report, and market research.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Track 3</a>
+<a class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors" href="modulo-3-2.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Experienced Independent Professional with AI - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script src="../../../assets/learn.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="pro-liberal-ia" name="inema-course"/>
+<title>Module 2.2: Teaching AI the Context of Your Profession | Pro Liberal IA</title>
+<!-- ANTI-FOUC: bloqueante, ANTES do Tailwind -->
+<script>
+    (function () {
+      try {
+        var p = JSON.parse(localStorage.getItem('inema.prefs') || '{}');
+        var d = document.documentElement;
+        var dark = p.theme ? p.theme !== 'claro' : (localStorage.getItem('theme') !== 'light');
+        if (dark) d.classList.add('dark'); else d.classList.remove('dark');
+        if (p.theme && p.theme !== 'inema-dark' && p.theme !== 'claro')
+          d.setAttribute('data-theme', p.theme);
+        if (p.fontScale) d.style.setProperty('--fs-root', p.fontScale + '%');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+<script data-inema-manifest="" type="application/json">
+  {"course":"pro-liberal-ia","tracks":[{"n":"1","title":"Fundamentos da IA","modules":[{"id":"1-1","title":"O que a IA pode fazer por voce","topics":6,"href":"curso/trilha1/modulo-1-1.html"},{"id":"1-2","title":"Como a IA pensa","topics":6,"href":"curso/trilha1/modulo-1-2.html"},{"id":"1-3","title":"Escolhendo sua ferramenta","topics":6,"href":"curso/trilha1/modulo-1-3.html"}]},{"n":"2","title":"Seu Assistente Profissional","modules":[{"id":"2-1","title":"Criando seu assistente","topics":6,"href":"curso/trilha2/modulo-2-1.html"},{"id":"2-2","title":"Ensinando o contexto","topics":6,"href":"curso/trilha2/modulo-2-2.html"},{"id":"2-3","title":"Fluxo de trabalho diario","topics":6,"href":"curso/trilha2/modulo-2-3.html"}]},{"n":"3","title":"Os 10 Prompts Essenciais","modules":[{"id":"3-1","title":"Prompts de atendimento","topics":6,"href":"curso/trilha3/modulo-3-1.html"},{"id":"3-2","title":"Prompts de producao","topics":6,"href":"curso/trilha3/modulo-3-2.html"},{"id":"3-3","title":"Prompts de estrategia","topics":6,"href":"curso/trilha3/modulo-3-3.html"}]},{"n":"4","title":"Templates Profissionais","modules":[{"id":"4-1","title":"Proposta comercial","topics":6,"href":"curso/trilha4/modulo-4-1.html"},{"id":"4-2","title":"Resposta para cliente","topics":6,"href":"curso/trilha4/modulo-4-2.html"},{"id":"4-3","title":"Conteudo para autoridade","topics":6,"href":"curso/trilha4/modulo-4-3.html"}]},{"n":"5","title":"Rotina e Pratica","modules":[{"id":"5-1","title":"Checklist de atendimento","topics":6,"href":"curso/trilha5/modulo-5-1.html"},{"id":"5-2","title":"Rotina semanal","topics":6,"href":"curso/trilha5/modulo-5-2.html"},{"id":"5-3","title":"Proximos passos","topics":6,"href":"curso/trilha5/modulo-5-3.html"}]}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:bg-teal-500\/10:hover { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+      .wf-a:nth-child(4){animation-delay:.75s} .wf-a:nth-child(5){animation-delay:1s}
+    }
+  </style>
+<link href="https://inematds.github.io/pro-liberal-ia/curso/trilha2/modulo-2-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/en/curso/trilha2/modulo-2-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/pro-liberal-ia/es/curso/trilha2/modulo-2-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-2-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha2/modulo-2-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧑‍💼</span>
+<span class="font-bold text-lg hidden sm:inline">Pro Liberal IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Assistant</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Prompts</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Templates</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Routine</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Start</a><span>/</span>
+<a class="hover:text-blue-400" href="index.html">Track 2</a><span>/</span>
+<span class="text-blue-400">Module 2.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-track="2">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULE 2.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📚 Teaching the Context of Your Profession</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Help AI understand your field, your style, and your references so it can produce work as if it were you. The more context you provide, the less rework you’ll have.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">45</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Hands-on</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 2.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:2-2" role="progressbar">
+<div class="flex items-center justify-between text-sm text-neutral-400 mb-2">
+<span data-inema-meter-frac="">0 of 6</span><span data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 bg-dark-700 rounded-full overflow-hidden">
+<div class="inema-bar__fill h-full bg-blue-500 rounded-full transition-all duration-500" data-inema-meter-fill="" style="width:0%"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-inema-module="2-2" data-inema-track="2" id="conteudo">
+<!-- TOPICO 1 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-1" id="topico-1" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">📋 What Professional Context Is</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t1-p1">
+<strong class="text-blue-400">Professional context</strong> and the set of information that turns a generic AI into one that understands your practice. It includes who you are, what you do, who you work for, how you communicate, and which rules you follow. Without context, the AI responds as if it were talking to anyone on the planet. With context, it responds as if it had worked with you for months and knew every detail of your office, practice, or studio.
+      </p>
+<!-- SVG: Sem contexto vs Com contexto -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Comparison between AI without context, which gives generic answers, and AI with context, which produces personalized output for the profession" class="w-full h-auto" role="img" viewbox="0 0 900 220">
+<defs>
+<lineargradient id="m22-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m22-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m22-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m22-grid)" height="220" width="900"></rect>
+<!-- Sem contexto -->
+<rect fill="#1a1a2e" height="180" opacity="0.7" rx="14" stroke="#9ca3af" stroke-width="2" width="390" x="30" y="20"></rect>
+<text fill="#9ca3af" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="225" y="50">No context</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="225" y="80">Question: "Draft an email to a client"</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="225" y="110">Response: "Dear Sir/Madam, here is the information..."</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="225" y="135">Generic tone, without field-specific jargon</text>
+<text fill="#6b7280" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="225" y="158">Default format; you rewrite 80%</text>
+<text fill="#ef4444" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="225" y="185">Result: +30 minutes of rework</text>
+<!-- Com contexto -->
+<g filter="url(#m22-glow)">
+<rect fill="#0e1622" height="180" rx="14" stroke="url(#m22-grad)" stroke-width="2" width="390" x="480" y="20"></rect>
+</g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="15" font-weight="600" text-anchor="middle" x="675" y="50">With Context</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="675" y="80">Question: "Draft an email to a client"</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="675" y="110">Response: "Dr. Santos, as stated in our opinion..."</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="675" y="135">Professional tone, correct terminology</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="675" y="158">Office format, ready to send</text>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="675" y="185">Result: a quick 2-minute review</text>
+</svg>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t1-p2">
+        Think of context as the "field manual" you give a new employee. Without it, they have to ask everything: "who are our clients?", "how do we reply to emails?", "what's the standard format for an expert report?" With the manual, they can start producing right away. AI works the same way. The difference is that you write this manual once and use it forever.
+      </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">80%</span><p class="text-xs text-neutral-400 mt-1">less rework</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">1x</span><p class="text-xs text-neutral-400 mt-1">set it up, use it regularly</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">Tone</span><p class="text-xs text-neutral-400 mt-1">consistent</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><span class="text-blue-400 font-bold text-lg">15 min</span><p class="text-xs text-neutral-400 mt-1">to put together</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 2 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-2" id="topico-2" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🗃️ Your essential information</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t2-p1">
+        The professional brief is the document you give your assistant with everything it needs to know about your practice. It doesn’t need to be long. It needs to be <strong class="text-blue-400">specific</strong>. Most professionals make the mistake of providing too much information without structure or too little without enough detail. The key is to organize it into <strong class="text-blue-400">6 blocks</strong> clear and objective.
+      </p>
+<!-- Timeline dos 6 blocos -->
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Identity</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b1">Your name, education, professional registration (CRM/OAB/CRC/CREA), specialties, and years of experience. Example: "I’m Dr. Maria Santos, a dermatologist, CRM-SP 123456, with 15 years of clinical practice focused on cosmetic and oncologic dermatology."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Specialty</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b2">Detailed areas of practice, procedures you perform, methodological approach. E.g.: "I practice family law, focusing on contested divorce, shared custody, and probate. I take a collaborative approach whenever possible."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Target audience</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b3">Who your typical clients/patients are, their age range, socioeconomic profile, and common concerns. Example: "My patients are women ages 35-60, upper-middle-class, concerned about aging and skin spots."</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Differentiators</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b4">What sets you apart from your peers, your work philosophy, awards, and publications. Example: “What sets me apart is my integrative approach: I combine traditional accounting with strategic tax planning for small and midsize businesses.”</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">5</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Restrictions</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b5">What the assistant must never do: diagnose, give definitive legal advice, promise results, cite data without a source. Example: “Never claim that a treatment is guaranteed. Always include ‘schedule an in-person consultation for a complete evaluation.’”</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold text-sm">6</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-white mb-1">Common cases</h4>
+<p class="text-neutral-300 text-sm" data-inema-block="m2-2-t2-b6">The 5–10 most common situations in your week. E.g., "Most frequent requests: reviewing articles of incorporation, starting a MEI business, estate planning, family holding companies, tax consulting."</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical Tip</h3>
+<p class="text-neutral-300" data-inema-block="m2-2-t2-tip">Don't try to fill in all 6 blocks at once. Start with the 3 required ones (Identity, Specialty, Audience) and add the others as you notice the assistant needs them. The briefing is a living document that evolves with you.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 3 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-3" id="topico-3" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🎨 Voice and style</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t3-p1">
+        O <strong class="text-blue-400">tone of voice</strong> is what makes AI’s writing sound like you, not a robot. If you’re a formal attorney, AI needs to write with legal formality. If you’re an approachable nutritionist, it needs to write in a relaxed, educational way. The wrong tone is the #1 reason professionals give up on AI: "it doesn’t sound like me." Getting the tone right saves more time than any other optimization.
+      </p>
+<!-- Grid de comparacao de tons -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Calibrated tone</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Dr. Silva, as we discussed at yesterday’s appointment, here’s the revised treatment plan."</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Dear Ms. Costa, please be advised that the appeal deadline ends in 15 business days."</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Hi, Marina! This week’s workout focuses on core strengthening. Ready?"</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Generic AI tone</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Of course! Here’s a treatment plan for you. I hope it’s helpful!"</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Absolutely! The appeal deadline is important. Be sure to keep track of deadlines."</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Here’s a core-focused exercise program. Have a great workout!"</span></li>
+</ul>
+</div>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t3-p2">
+        To calibrate the tone, use the technique of <strong class="text-blue-400">"write like this text"</strong>. Pick 2-3 emails or messages you’ve written that represent your style well. Paste them into the system prompt with the instruction: "Use these texts as a reference for tone and style." The AI will absorb your vocabulary, favorite expressions, and writing rhythm.
+      </p>
+<!-- Copy-run prompt -->
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-blue-400 text-sm">📋 Prompt to Calibrate Your Tone of Voice (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m2-2-t3-prompt">Analyze these 3 texts I wrote and identify my communication style:
+
+TEXT 1: [paste an email you sent to a client]
+TEXT 2: [paste a professional WhatsApp message]
+TEXT 3: [paste an excerpt from a report/opinion]
+
+Based on these texts, identify:
+1. Level of formality (1-10)
+2. Words and expressions I use frequently
+3. Typical sentence length
+4. How I start and end messages
+5. Punctuation and formatting style
+
+Summarize this in one paragraph of instructions that I can paste into my assistant's system prompt.</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Tip: the Formal-Informal Spectrum</h3>
+<p class="text-neutral-300" data-inema-block="m2-2-t3-tip">Choose a number from 1 to 10 for the assistant. 1 = ultra-informal (slang, emoji). 5 = approachable and professional. 8 = formal and technical. 10 = legal/academic language. Add this to the system prompt: "Use a formality level of 7." That alone solves 60% of tone problems.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 4 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-4" id="topico-4" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📚 Knowledge Base</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t4-p1">
+        A <strong class="text-blue-400">knowledge base</strong> and the collection of documents you provide to the assistant for it to consult when generating content. Instead of making up information, it uses your own templates, standards, and references. This changes everything: the assistant stops being a generic text generator and becomes a writer who knows your office's standards.
+      </p>
+<!-- Grid: o que incluir na base -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-blue-400 mb-3">📄 Template documents</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Standard contracts and draft agreements</li>
+<li>Opinion or expert report templates</li>
+<li>Business proposal templates</li>
+<li>Reference emails by type</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-blue-400 mb-3">📖 Standards and Regulations</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Professional code of ethics</li>
+<li>Technical standards (ABNT, CFM, OAB)</li>
+<li>The firm's internal regulations</li>
+<li>LGPD applied to your field</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<h4 class="font-semibold text-blue-400 mb-3">📊 Business data</h4>
+<ul class="space-y-2 text-sm text-neutral-300">
+<li>Price and fee schedule</li>
+<li>FAQ answered for clients</li>
+<li>History of common cases</li>
+<li>Standard customer service scripts</li>
+</ul>
+</div>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t4-p2">
+<strong class="text-blue-400">How to do it in practice:</strong> in ChatGPT, create a custom GPT and upload the files in the "Knowledge" section. In Claude, use "Projects" and add documents as project context. In Gemini, attach files directly to the conversation. Each platform has its own method, but the principle is the same: give the assistant access to your actual references.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">💡</span> Context limits by platform</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-3">
+<div class="text-center"><span class="text-blue-400 font-bold text-lg">128k</span><p class="text-xs text-neutral-400">ChatGPT-4o (tokens)</p><p class="text-xs text-neutral-500">~96 thousand words</p></div>
+<div class="text-center"><span class="text-blue-400 font-bold text-lg">200k</span><p class="text-xs text-neutral-400">Claude (tokens)</p><p class="text-xs text-neutral-500">~150 thousand words</p></div>
+<div class="text-center"><span class="text-blue-400 font-bold text-lg">1M+</span><p class="text-xs text-neutral-400">Gemini (tokens)</p><p class="text-xs text-neutral-500">~750 thousand words</p></div>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 5 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-5" id="topico-5" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🔧 Fine-tuning</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t5-p1">
+        No assistant is perfect on the first try. The <strong class="text-blue-400">fine-tuning</strong> is the process of identifying and correcting unwanted behavior. Does the assistant talk too much? Use the wrong jargon? Make up data? Each problem has a specific solution in the system prompt. Knowing how to diagnose issues is the skill that separates those who give up ("AI doesn’t work") from those who optimize until they get real results.
+      </p>
+<!-- Tabela de problemas e solucoes -->
+<div class="overflow-x-auto mb-6">
+<table class="w-full text-sm border border-dark-600 rounded-xl overflow-hidden">
+<thead>
+<tr class="bg-dark-800">
+<th class="text-left p-4 text-blue-400 font-semibold border-b border-dark-600">Problem</th>
+<th class="text-left p-4 text-blue-400 font-semibold border-b border-dark-600">Diagnosis</th>
+<th class="text-left p-4 text-blue-400 font-semibold border-b border-dark-600">Solution in the prompt</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-dark-600">
+<tr class="bg-dark-900"><td class="p-4 text-neutral-300">Response is too long</td><td class="p-4 text-neutral-400">No length limit</td><td class="p-4 text-neutral-300">"Responses of no more than 200 words unless I ask for more detail."</td></tr>
+<tr class="bg-dark-800"><td class="p-4 text-neutral-300">Wrong tone</td><td class="p-4 text-neutral-400">No style reference</td><td class="p-4 text-neutral-300">"Use a formal, technical tone, level 7/10. Avoid slang and exclamation points."</td></tr>
+<tr class="bg-dark-900"><td class="p-4 text-neutral-300">Makes up data</td><td class="p-4 text-neutral-400">No hallucination constraint</td><td class="p-4 text-neutral-300">"Never cite statistics without a source. If you don’t know, say you don’t know."</td></tr>
+<tr class="bg-dark-800"><td class="p-4 text-neutral-300">Inappropriate format</td><td class="p-4 text-neutral-400">No output format</td><td class="p-4 text-neutral-300">"For reports, use: Header &gt; Analysis &gt; Conclusion &gt; Recommendation."</td></tr>
+<tr class="bg-dark-900"><td class="p-4 text-neutral-300">Ignore ethical restrictions</td><td class="p-4 text-neutral-400">Missing or weak rule</td><td class="p-4 text-neutral-300">"NEVER suggest a diagnosis. Always include: 'consult a professional'."</td></tr>
+</tbody>
+</table>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-blue-400 text-sm">📋 Diagnostic Prompt (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m2-2-t5-prompt">I'll send you 3 answers you gave me recently. For each one, evaluate:
+
+1. Is the tone appropriate for my professional profile? (1-10)
+2. Does the format follow the standard I defined?
+3. Is any information made up or inaccurate?
+4. Is the length appropriate?
+5. What would you change if you could do it again?
+
+Respond in table format. At the end, suggest 3 specific adjustments to my system prompt that would fix the problems you found.</pre>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Attention</h3>
+<p class="text-neutral-300" data-inema-block="m2-2-t5-warn">Fine-tune iteratively. Don't try to fix 5 problems at once. Fix one, test it, confirm that it improved, then move on to the next. If you change too many things at once, you won't know what worked and what got worse.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- TOPICO 6 -->
+<section class="mb-16" data-inema-topic="modulo-2-2#topico-6" id="topico-6" style="scroll-margin-top:4rem">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🚀 Perfect context checklist</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t6-p1">
+        Use this checklist to audit your professional context. Even if the assistant is already working well, going through each item ensures you haven’t forgotten anything important. Divide items into 3 priority levels: <strong class="text-blue-400">required</strong> (it won't work without this), <strong class="text-blue-400">recommended</strong> (greatly improves quality) and <strong class="text-blue-400">optional</strong> (for advanced refinement).
+      </p>
+<!-- Checklist visual -->
+<div class="space-y-4 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">★ Required (start here)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">☑</span><span>Professional identity (name, registration, primary specialty)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">☑</span><span>Target audience (who your typical clients/patients are)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">☑</span><span>Voice (level of formality, communication style)</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-4">★★ Recommended (makes a big difference)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400">☑</span><span>Ethical and regulatory restrictions of the profession</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">☑</span><span>Default output format (how you want the responses)</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">☑</span><span>Template documents (contracts, opinions, reference reports)</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">☑</span><span>Words and Expressions to Use and Avoid</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">☑</span><span>Common cases and how to handle each one</span></li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<h4 class="font-bold text-neutral-300 mb-4">★★★ Optional (advanced refinement)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-neutral-500">☑</span><span>Competitors and how to stand out from them</span></li>
+<li class="flex items-start space-x-2"><span class="text-neutral-500">☑</span><span>History of decisions (case law, previous cases)</span></li>
+<li class="flex items-start space-x-2"><span class="text-neutral-500">☑</span><span>Internal office approval workflows</span></li>
+<li class="flex items-start space-x-2"><span class="text-neutral-500">☑</span><span>Examples of your writing for detailed style reference</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-blue-400 text-sm">📋 Context Audit Prompt (Copy and Use)</h4>
+</div>
+<pre class="bg-dark-900 rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto whitespace-pre-wrap" data-inema-block="m2-2-t6-prompt">Analise o meu prompt de sistema atual e avalie cada item abaixo de 0 a 10:
+
+1. Identidade profissional esta clara?
+2. Publico-alvo esta definido com especificidade?
+3. Tom de voz esta calibrado (formal/informal)?
+4. Restricoes eticas estao explicitas?
+5. Formato de saida esta padronizado?
+6. Base de conhecimento esta referenciada?
+7. Palavras/expressoes a usar e evitar estao listadas?
+8. Casos frequentes estao cobertos?
+
+Para cada item abaixo de 7, sugira uma frase especifica que eu possa adicionar ao prompt de sistema para melhorar. Responda em formato de tabela com colunas: Item | Nota | Sugestao.</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">📅</span> Monthly review</h3>
+<p class="text-neutral-300" data-inema-block="m2-2-t6-tip">Set aside 15 minutes each month to review the checklist. Your practice evolves, your clients change, and new regulations emerge. The context that was perfect 3 months ago may be out of date today. Monthly reviews ensure the assistant keeps up with your professional growth.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span>
+<span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Experienced Independent Professional with AI - 2026</p>
+<p class="mt-1"><a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>if (window.INEMA && typeof window.INEMA.init === "function") { window.INEMA.init(); }</script>
+</body>
+</html>
